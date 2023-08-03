@@ -416,7 +416,10 @@
                       </a>
                     </div>
                     <div class="home-event-title">
-                      <a href="event-registration.html" id="home-event-title-link">
+                      <a
+                        href="event-registration.html"
+                        id="home-event-title-link"
+                      >
                         <p id="last-event-title-text">در حال بارگذاری...</p>
                       </a>
                     </div>
@@ -742,8 +745,8 @@
                                             href="event-registration.html"
                                             dir="rtl"
                                           >
-                                          ضیافت افطاری انجمن علمی مهندسی
-                                          کامپیوتر
+                                            ضیافت افطاری انجمن علمی مهندسی
+                                            کامپیوتر
                                           </a>
                                         </h3>
                                         <a
@@ -810,8 +813,8 @@
                                             href="event-registration.html"
                                             dir="rtl"
                                           >
-                                          دورهمی صمیمانه دانشجویان و اساتید
-                                          گروه کامپیوتر
+                                            دورهمی صمیمانه دانشجویان و اساتید
+                                            گروه کامپیوتر
                                           </a>
                                         </h3>
                                         <a
@@ -881,7 +884,7 @@
                                             href="event-registration.html"
                                             dir="rtl"
                                           >
-                                          دوره جامع بوت‌کمپ
+                                            دوره جامع بوت‌کمپ
                                           </a>
                                         </h3>
                                         <a
@@ -948,7 +951,7 @@
                                             href="event-registration.html"
                                             dir="rtl"
                                           >
-                                          دوره آموزشی جنگو
+                                            دوره آموزشی جنگو
                                           </a>
                                         </h3>
                                         <a
@@ -1015,7 +1018,7 @@
                                             href="event-registration.html"
                                             dir="rtl"
                                           >
-                                          دوره یادگیری ماشین
+                                            دوره یادگیری ماشین
                                           </a>
                                         </h3>
                                         <a
@@ -1082,7 +1085,7 @@
                                             href="event-registration.html"
                                             dir="rtl"
                                           >
-                                          برنامه‌نویسی مقدماتی اندروید
+                                            برنامه‌نویسی مقدماتی اندروید
                                           </a>
                                         </h3>
                                         <a
@@ -2624,7 +2627,6 @@
     ></script>
 
     <script>
-      // Function to fetch the API data
       async function fetchApiData() {
         const apiURL = "https://ssces-fum.ir/events/events/?ordering=-date";
 
@@ -2634,20 +2636,23 @@
 
           if (data.results && data.results.length > 0) {
             // Get the id and title of the first post
-            const firstPostId = data.results[0].id;
+            const lastPostId = data.results[0].id;
             const lastPostTitle = data.results[0].title;
-
-            // Construct the dynamic link for the first post
-            const firstPostLink = `https://ssces-fum.ir/events/events/${firstPostId}/`;
-
-            // Update the HTML to display the post info
 
             //last-event-title-text
             document.getElementById("last-event-title-text").textContent =
               lastPostTitle;
-            // document.getElementById("post-title").textContent = firstPostTitle;
-            // document.getElementById("post-link").textContent = firstPostLink;
-            // document.getElementById("post-link").href = firstPostLink;
+
+            // Construct the dynamic link for the first post
+            const lastPostLink = `registration.html?eventID=${lastPostId}`;
+
+            const homePosterLink = document.getElementById("home-poster-link");
+            const homeEventTitleLink = document.getElementById(
+              "home-event-title-link"
+            );
+
+            homePosterLink.href = lastPostLink;
+            homeEventTitleLink.href = lastPostLink;
           } else {
             console.log("No posts found in the API response.");
           }
@@ -2686,8 +2691,10 @@
 
           const eventTitleId = `event-title-${index + 1}`;
           const eventTitle = document.getElementById(eventTitleId);
-          console.log("🚀 ~ file: index.html:2689 ~ lastNineEvents.forEach ~ eventTitle:", eventTitle)
-          
+          console.log(
+            "🚀 ~ file: index.html:2689 ~ lastNineEvents.forEach ~ eventTitle:",
+            eventTitle
+          );
 
           if (eventTitle) {
             eventTitle.innerHTML = `${title}`;
