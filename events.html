@@ -1294,7 +1294,10 @@
         // Loop through each event and create event elements
         eventsToShow.forEach((event) => {
           const title = event.title;
-          const date = event.date;
+          const rawDate = event.date;
+
+          const date = persianDateConverter(rawDate);
+
           const eventElement = createEventElement(title, date);
 
           // Append the event element to the event sections
@@ -1304,6 +1307,31 @@
         // Create pagination links
         const totalPages = Math.ceil(apiData.count / eventsPerPage);
         createPaginationLinks(totalPages, pageNumber);
+      }
+
+      function getFaFormattedDate(inputDate) {
+        const dayMonth = getDateFormat(inputDate, {
+          day: "2-digit",
+          month: "long",
+        });
+
+        const year = getDateFormat(inputDate, {
+          year: "numeric",
+        });
+
+        return `${dayMonth}، ${year}`;
+      }
+
+      function getDateFormat(uDate, option) {
+        let date = new Intl.DateTimeFormat("fa-IR", option).format(uDate);
+        return date;
+      }
+
+      function persianDateConverter(gregorianDate) {
+        const inputDate = new Date(gregorianDate);
+        const formattedFaDate = getFaFormattedDate(inputDate);
+
+        return formattedFaDate;
       }
 
       // Function to create event elements
@@ -1355,22 +1383,22 @@
 
         // Page Number Links
         for (let i = 1; i <= totalPages; i++) {
-      let pageLink;
-  
-      if (i === currentPage) {
-        pageLink = document.createElement('span');
-        pageLink.classList.add('page-numbers', 'current');
-        pageLink.textContent = i;
-        pageLink.setAttribute('aria-current', 'page');
-      } else {
-        pageLink = document.createElement('a');
-        pageLink.classList.add('page-numbers');
-        pageLink.href = '#';
-        pageLink.textContent = i;
-      }
-  
-      pagination.appendChild(pageLink);
-    }
+          let pageLink;
+
+          if (i === currentPage) {
+            pageLink = document.createElement("span");
+            pageLink.classList.add("page-numbers", "current");
+            pageLink.textContent = i;
+            pageLink.setAttribute("aria-current", "page");
+          } else {
+            pageLink = document.createElement("a");
+            pageLink.classList.add("page-numbers");
+            pageLink.href = "#";
+            pageLink.textContent = i;
+          }
+
+          pagination.appendChild(pageLink);
+        }
 
         // Next Page Link
         const nextPageLink = document.createElement("a");
