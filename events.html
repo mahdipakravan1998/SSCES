@@ -1261,24 +1261,29 @@
     ></script>
 
     <script>
-      // Function to fetch API data
-      function fetchEventData(pageNumber = 1) {
-        const eventsPerPage = 6;
-        const apiUrl = `https://ssces-fum.ir/events/events/?ordering=-date&page=${pageNumber}`;
+      async function fetchEventsData() {
+        console.log("🚀 ~ file: events.html:1265 ~ fetchEventsData ~ fetchEventsData:", fetchEventsData)
+        const apiUrl = "https://ssces-fum.ir/events/events/?ordering=-date";
 
-        return fetch(apiUrl)
-          .then((response) => response.json())
-          .then((data) => {
-            // Process the API data and update the page
-            displayEventData(data, pageNumber, eventsPerPage);
-          })
-          .catch((error) => {
-            console.error("Error fetching data:", error);
-          });
+        try {
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+          return data.results;
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          return [];
+        }
       }
 
-      // Function to display event data
-      function displayEventData(apiData, pageNumber, eventsPerPage) {
+      const postsPerPage = 6;
+
+      function calculateTotalPages(totalPosts) {
+        console.log("🚀 ~ file: events.html:1281 ~ calculateTotalPages ~ calculateTotalPages:", calculateTotalPages)
+        return Math.ceil(totalPosts / postsPerPage);
+      }
+
+      function displayPosts(posts, currentPage) {
+        console.log("🚀 ~ file: events.html:1286 ~ displayPosts ~ displayPosts:", displayPosts)
         const eventSections = document.getElementById("events-cards");
         const pagination = document.getElementById("pagination");
 
@@ -1286,27 +1291,19 @@
         eventSections.innerHTML = "";
         pagination.innerHTML = "";
 
-        // Get the relevant events for the current page
-        const startIndex = (pageNumber - 1) * eventsPerPage;
-        const endIndex = startIndex + eventsPerPage;
-        const eventsToShow = apiData.results.slice(startIndex, endIndex);
+        const startIndex = (currentPage - 1) * postsPerPage;
+        const endIndex = startIndex + postsPerPage;
 
-        // Loop through each event and create event elements
-        eventsToShow.forEach((event) => {
-          const title = event.title;
-          const rawDate = event.date;
+        for (let i = startIndex; i < endIndex && i < posts.length; i++) {
+          const post = posts[i];
+          const title = post.title;
+          const rawDate = post.date;
 
           const date = persianDateConverter(rawDate);
 
           const eventElement = createEventElement(title, date);
-
-          // Append the event element to the event sections
           eventSections.appendChild(eventElement);
-        });
-
-        // Create pagination links
-        const totalPages = Math.ceil(apiData.count / eventsPerPage);
-        createPaginationLinks(totalPages, pageNumber);
+        }
       }
 
       function getFaFormattedDate(inputDate) {
@@ -1334,8 +1331,8 @@
         return formattedFaDate;
       }
 
-      // Function to create event elements
       function createEventElement(title, date) {
+        console.log("🚀 ~ file: events.html:1335 ~ createEventElement ~ createEventElement:", createEventElement)
         const eventElement = document.createElement("div");
         eventElement.classList.add(
           "gdlr-core-item-list",
@@ -1346,39 +1343,45 @@
         // Add the rest of the HTML structure for each event element
         // Replace the following lines with the structure of your event element
         eventElement.innerHTML = `
-        <div class="gdlr-core-blog-modern gdlr-core-with-image gdlr-core-hover-overlay-content gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover gdlr-core-style-1 gdlr-core-outer-frame-element post-event-image">
-          <div class="gdlr-core-blog-modern-inner">
-            <div class="gdlr-core-blog-thumbnail gdlr-core-media-image">
-              <img src="upload/post_ios.jpg" alt="" title="post-ios" />
-            </div>
-            <div class="gdlr-core-blog-modern-content gdlr-core-center-align" style="padding: 0px 30px 30px 30px;">
-              <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 20px; font-weight: 700; letter-spacing: 0px;">
-                <a href="event-registration.html" dir="rtl">${title}</a>
-              </h3>
-              <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-                <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                  <span class="gdlr-core-blog-info-sep">•</span>
-                  <span dir="rtl">${date}</span>
-                  <span class="gdlr-core-head"><i class="gdlr-icon-clock"></i></span>
-                </span>
-              </div>
-            </div>
+    <div class="gdlr-core-blog-modern gdlr-core-with-image gdlr-core-hover-overlay-content gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover gdlr-core-style-1 gdlr-core-outer-frame-element post-event-image">
+      <div class="gdlr-core-blog-modern-inner">
+        <div class="gdlr-core-blog-thumbnail gdlr-core-media-image">
+          <img src="upload/post_ios.jpg" alt="" title="post-ios" />
+        </div>
+        <div class="gdlr-core-blog-modern-content gdlr-core-center-align" style="padding: 0px 30px 30px 30px;">
+          <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 20px; font-weight: 700; letter-spacing: 0px;">
+            <a href="event-registration.html" dir="rtl">${title}</a>
+          </h3>
+          <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
+            <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
+              <span class="gdlr-core-blog-info-sep">•</span>
+              <span dir="rtl">${date}</span>
+              <span class="gdlr-core-head"><i class="gdlr-icon-clock"></i></span>
+            </span>
           </div>
         </div>
-      `;
+      </div>
+    </div>
+  `;
 
         return eventElement;
       }
 
-      // Function to create pagination links
-      function createPaginationLinks(totalPages, currentPage) {
+      function createPaginationButtons(totalPages, currentPage) {
+        console.log("🚀 ~ file: events.html:1371 ~ createPaginationButtons ~ createPaginationButtons:", createPaginationButtons)
         const pagination = document.getElementById("pagination");
         pagination.innerHTML = "";
 
         // Previous Page Link
         const prevPageLink = document.createElement("a");
         prevPageLink.classList.add("prev", "page-numbers");
-        prevPageLink.href = "#";
+        if (currentPage === 1) {
+          prevPageLink.href = "javascript:void(0);"; // Disable link if on the first page
+        } else {
+          prevPageLink.addEventListener("click", () => {
+            navigateToPage(currentPage - 1);
+          });
+        }
         pagination.appendChild(prevPageLink);
 
         // Page Number Links
@@ -1393,7 +1396,11 @@
           } else {
             pageLink = document.createElement("a");
             pageLink.classList.add("page-numbers");
-            pageLink.href = "#";
+
+            pageLink.addEventListener("click", () => {
+              navigateToPage(i);
+            });
+
             pageLink.textContent = i;
           }
 
@@ -1403,12 +1410,40 @@
         // Next Page Link
         const nextPageLink = document.createElement("a");
         nextPageLink.classList.add("next", "page-numbers");
-        nextPageLink.href = "#";
+
+        if (currentPage === totalPages) {
+          nextPageLink.href = "javascript:void(0);"; // Disable link if on the last page
+        } else {
+          nextPageLink.addEventListener("click", () => {
+            navigateToPage(currentPage + 1);
+          });
+        }
         pagination.appendChild(nextPageLink);
       }
 
-      // Fetch the data and display the first page
-      fetchEventData();
+      function navigateToPage(pageNumber) {
+        console.log("🚀 ~ file: events.html:1425 ~ navigateToPage ~ navigateToPage:", navigateToPage)
+        // Fetch new data for the specified page
+        fetchAndDisplayPage(pageNumber);
+      }
+
+      async function fetchAndDisplayPage(pageNumber) {
+        console.log("🚀 ~ file: events.html:1431 ~ fetchAndDisplayPage ~ fetchAndDisplayPage:", fetchAndDisplayPage)
+        const posts = await fetchEventsData();
+        const totalPages = calculateTotalPages(posts.length);
+
+        if (pageNumber < 1 || pageNumber > totalPages) {
+          return; // Page number is out of range
+        }
+
+        // Display posts for the current page
+        displayPosts(posts, pageNumber);
+
+        // Create and display pagination buttons
+        createPaginationButtons(totalPages, pageNumber);
+      }
+
+      fetchAndDisplayPage(1);
     </script>
   </body>
 </html>
