@@ -805,6 +805,20 @@
                         </div>
                       </div>
                     </div>
+
+                    <div
+                      id="no-content-message"
+                      class="ssces-not-found-content ssces-item-pdlr hidden-not-found"
+                      style="text-align: center;"
+                    >
+                      <h3 class="ssces-not-found-title ssces-content-font">
+                        رویدادی با این مشخصات پیدا نکردیم
+                      </h3>
+                      <div class="ssces-not-found-caption">
+                        پیشنهاد می‌کنیم فیلترها را تغییر دهید
+                      </div>
+                    </div>
+
                     <div
                       id="pagination"
                       class="gdlr-core-pagination gdlr-core-style-circle gdlr-core-center-align gdlr-core-item-pdlr"
@@ -835,7 +849,7 @@
                     >
                       <div class="tourmaster-room-search-tax-wrap">
                         <div class="tourmaster-room-search-tax-item">
-                          <div class="tourmaster-filter">
+                          <div class="tourmaster-filter" id="filter-container">
                             <div class="tourmaster-filter-term">
                               کارگاه‌ها
                               <input
@@ -883,10 +897,9 @@
                           </div>
                         </div>
                       </div>
-                      <div
-                        class="tourmaster-room-search-size4 tourmaster-room-search-submit-wrap"
-                      >
+                      <div class="tourmaster-room-search-submit-wrap">
                         <input
+                          id="search-button"
                           class="tourmaster-room-search-submit tourmaster-style-border"
                           type="submit"
                           value="جستجو"
@@ -1262,7 +1275,6 @@
 
     <script>
       async function fetchEventsData() {
-        console.log("🚀 ~ file: events.html:1265 ~ fetchEventsData ~ fetchEventsData:", fetchEventsData)
         const apiUrl = "https://ssces-fum.ir/events/events/?ordering=-date";
 
         try {
@@ -1275,15 +1287,13 @@
         }
       }
 
-      const postsPerPage = 6;
+      const postsPerPage = 9;
 
       function calculateTotalPages(totalPosts) {
-        console.log("🚀 ~ file: events.html:1281 ~ calculateTotalPages ~ calculateTotalPages:", calculateTotalPages)
         return Math.ceil(totalPosts / postsPerPage);
       }
 
       function displayPosts(posts, currentPage) {
-        console.log("🚀 ~ file: events.html:1286 ~ displayPosts ~ displayPosts:", displayPosts)
         const eventSections = document.getElementById("events-cards");
         const pagination = document.getElementById("pagination");
 
@@ -1304,6 +1314,8 @@
           const eventElement = createEventElement(title, date);
           eventSections.appendChild(eventElement);
         }
+
+        createPaginationButtons(posts.length, currentPage);
       }
 
       function getFaFormattedDate(inputDate) {
@@ -1332,7 +1344,6 @@
       }
 
       function createEventElement(title, date) {
-        console.log("🚀 ~ file: events.html:1335 ~ createEventElement ~ createEventElement:", createEventElement)
         const eventElement = document.createElement("div");
         eventElement.classList.add(
           "gdlr-core-item-list",
@@ -1340,35 +1351,34 @@
           "gdlr-core-item-mgb",
           "gdlr-core-column-20"
         );
-        // Add the rest of the HTML structure for each event element
-        // Replace the following lines with the structure of your event element
+
         eventElement.innerHTML = `
-    <div class="gdlr-core-blog-modern gdlr-core-with-image gdlr-core-hover-overlay-content gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover gdlr-core-style-1 gdlr-core-outer-frame-element post-event-image">
-      <div class="gdlr-core-blog-modern-inner">
-        <div class="gdlr-core-blog-thumbnail gdlr-core-media-image">
-          <img src="upload/post_ios.jpg" alt="" title="post-ios" />
+        <div class="gdlr-core-blog-modern gdlr-core-with-image gdlr-core-hover-overlay-content gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover gdlr-core-style-1 gdlr-core-outer-frame-element post-event-image">
+            <div class="gdlr-core-blog-modern-inner">
+                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image">
+                    <img src="upload/post_ios.jpg" alt="" title="post-ios" />
+                </div>
+                <div class="gdlr-core-blog-modern-content gdlr-core-center-align" style="padding: 0px 30px 30px 30px;">
+                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 20px; font-weight: 700; letter-spacing: 0px;">
+                        <a href="event-registration.html" dir="rtl">${title}</a>
+                    </h3>
+                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
+                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
+                            <span class="gdlr-core-blog-info-sep">•</span>
+                            <span dir="rtl">${date}</span>
+                            <span class="gdlr-core-head"><i class="gdlr-icon-clock"></i></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="gdlr-core-blog-modern-content gdlr-core-center-align" style="padding: 0px 30px 30px 30px;">
-          <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 20px; font-weight: 700; letter-spacing: 0px;">
-            <a href="event-registration.html" dir="rtl">${title}</a>
-          </h3>
-          <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-            <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-              <span class="gdlr-core-blog-info-sep">•</span>
-              <span dir="rtl">${date}</span>
-              <span class="gdlr-core-head"><i class="gdlr-icon-clock"></i></span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
+    `;
 
         return eventElement;
       }
 
-      function createPaginationButtons(totalPages, currentPage) {
-        console.log("🚀 ~ file: events.html:1371 ~ createPaginationButtons ~ createPaginationButtons:", createPaginationButtons)
+      function createPaginationButtons(totalPosts, currentPage) {
+        const totalPages = calculateTotalPages(totalPosts);
         const pagination = document.getElementById("pagination");
         pagination.innerHTML = "";
 
@@ -1422,15 +1432,14 @@
       }
 
       function navigateToPage(pageNumber) {
-        console.log("🚀 ~ file: events.html:1425 ~ navigateToPage ~ navigateToPage:", navigateToPage)
         // Fetch new data for the specified page
         fetchAndDisplayPage(pageNumber);
       }
 
       async function fetchAndDisplayPage(pageNumber) {
-        console.log("🚀 ~ file: events.html:1431 ~ fetchAndDisplayPage ~ fetchAndDisplayPage:", fetchAndDisplayPage)
         const posts = await fetchEventsData();
-        const totalPages = calculateTotalPages(posts.length);
+        const totalPosts = posts.length;
+        const totalPages = calculateTotalPages(totalPosts);
 
         if (pageNumber < 1 || pageNumber > totalPages) {
           return; // Page number is out of range
@@ -1438,12 +1447,60 @@
 
         // Display posts for the current page
         displayPosts(posts, pageNumber);
-
-        // Create and display pagination buttons
-        createPaginationButtons(totalPages, pageNumber);
       }
 
-      fetchAndDisplayPage(1);
+      const categoryMapping = {
+        workshop: 1,
+        course: 2,
+        conference: 3,
+        celebration: 4,
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll(
+          "#filter-container input[type='checkbox']"
+        );
+        const searchButton = document.getElementById("search-button");
+        const filteredPostsContainer = document.getElementById("events-cards");
+        const noContentMessage = document.getElementById("no-content-message");
+
+        // Filter and display posts based on selected categories
+        function filterAndDisplayPosts(postsData) {
+          const selectedCategories = Array.from(checkboxes)
+            .filter((checkbox) => checkbox.checked)
+            .map((checkbox) => categoryMapping[checkbox.value]);
+
+          const filteredPosts = postsData.filter((post) =>
+            selectedCategories.includes(post.category)
+          );
+
+          displayFilteredPosts(filteredPosts);
+        }
+
+        // Display filtered posts or show no content message
+        function displayFilteredPosts(posts) {
+          if (posts.length === 0) {
+            filteredPostsContainer.innerHTML = "";
+            noContentMessage.classList.remove("hidden-not-found");
+            pagination.innerHTML = ""; // Remove pagination when there are no posts
+          } else {
+            noContentMessage.classList.add("hidden-not-found");
+            filteredPostsContainer.innerHTML = "";
+            displayPosts(posts, 1); // Display filtered posts with pagination
+            createPaginationButtons(posts.length, 1); // Reset pagination with filtered posts
+          }
+        }
+
+        // Set up event listener for search button
+        searchButton.addEventListener("click", async function (event) {
+          event.preventDefault(); // Prevent form submission and page reload
+          const postsData = await fetchEventsData();
+          filterAndDisplayPosts(postsData);
+        });
+
+        // Initial fetch and display of all posts
+        fetchAndDisplayPage(1);
+      });
     </script>
   </body>
 </html>
