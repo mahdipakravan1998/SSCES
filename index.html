@@ -412,7 +412,7 @@
                   <div class="last-event">
                     <div class="home-poster">
                       <a href="event-registration.html" id="home-poster-link">
-                        <img src="upload/post_ios.jpg" />
+                        <img id="home-poster-img" src="upload/post_ios.jpg" />
                       </a>
                     </div>
                     <div class="home-event-title">
@@ -587,6 +587,7 @@
                                           href="event-registration.html"
                                         >
                                           <img
+                                            id="poster-img-1"
                                             class="event-poster-img"
                                             src="upload/post_ios.jpg"
                                             alt=""
@@ -659,6 +660,7 @@
                                           href="event-registration.html"
                                         >
                                           <img
+                                            id="poster-img-2"
                                             class="event-poster-img"
                                             src="upload/post_latex.jpg"
                                             alt=""
@@ -731,6 +733,7 @@
                                           href="event-registration.html"
                                         >
                                           <img
+                                            id="poster-img-3"
                                             class="event-poster-img"
                                             src="upload/post_iftar.jpg"
                                             alt=""
@@ -804,6 +807,7 @@
                                           href="event-registration.html"
                                         >
                                           <img
+                                            id="poster-img-4"
                                             class="event-poster-img"
                                             src="upload/post_yalda.jpg"
                                             alt=""
@@ -877,6 +881,7 @@
                                           href="event-registration.html"
                                         >
                                           <img
+                                            id="poster-img-5"
                                             class="event-poster-img"
                                             src="upload/post_bootcamp.png"
                                             alt=""
@@ -949,6 +954,7 @@
                                           href="event-registration.html"
                                         >
                                           <img
+                                            id="poster-img-6"
                                             class="event-poster-img"
                                             src="upload/post_django.jpg"
                                             alt=""
@@ -1021,6 +1027,7 @@
                                           href="event-registration.html"
                                         >
                                           <img
+                                            id="poster-img-7"
                                             class="event-poster-img"
                                             src="upload/post_ML_course.jpg"
                                             alt=""
@@ -1093,6 +1100,7 @@
                                           href="event-registration.html"
                                         >
                                           <img
+                                            id="poster-img-8"
                                             class="event-poster-img"
                                             src="upload/post_Android.png"
                                             alt=""
@@ -1165,6 +1173,7 @@
                                           href="event-registration.html"
                                         >
                                           <img
+                                            id="poster-img-9"
                                             class="event-poster-img"
                                             src="upload/post_bootstrap.jpg"
                                             alt=""
@@ -2674,6 +2683,7 @@
             // Get the id and title of the first post
             const lastPostId = data.results[0].id;
             const lastPostTitle = data.results[0].title;
+            const lastPostImg = data.results[0].image;
 
             //last-event-title-text
             document.getElementById("last-event-title-text").textContent =
@@ -2688,6 +2698,10 @@
               "home-event-title-link"
             );
 
+            const homePosterImgElement =
+              document.getElementById("home-poster-img");
+            
+              homePosterImgElement.src = lastPostImg;
             homePosterLinkElement.href = lastPostLink;
             homeEventTitleLinkElement.href = lastPostLink;
           } else {
@@ -2720,6 +2734,7 @@
         lastNineEvents.forEach((event, index) => {
           const title = event.title;
           const id = event.id;
+          const imageUrl = event.image;
 
           // Check if anonymousUserPrice and authenticatedUserPrice are different
           const authenticatedUserPrice = event.authenticated_user_price;
@@ -2751,15 +2766,21 @@
           const eventRegistrationElement =
             document.getElementById(eventRegistrationId);
 
+          const posterImgId = `poster-img-${index + 1}`;
+          const posterImgElement = document.getElementById(posterImgId);
+
           if (
             eventRegistrationElement &&
             eventTitleElement &&
-            eventPosterElement
+            eventPosterElement &&
+            posterImgElement
           ) {
             eventPosterElement.href = registrationLink;
             eventTitleElement.innerHTML = `${title}`;
             eventTitleElement.href = registrationLink;
             eventRegistrationElement.href = registrationLink;
+            eventCardPosterElement.style.backgroundImage = `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('${imageUrl}')`;
+            posterImgElement.src = imageUrl;
           }
         });
       }
