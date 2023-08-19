@@ -407,7 +407,6 @@
                     <div
                       id="events-cards"
                       class="gdlr-core-blog-item-holder gdlr-core-js-2 clearfix"
-                      data-layout="fitrows"
                     >
                       <div
                         class="gdlr-core-item-list gdlr-core-item-pdlr gdlr-core-item-mgb gdlr-core-column-20"
@@ -1309,6 +1308,7 @@
           const id = post.id;
           const title = post.title;
           const rawDate = post.date;
+          const imageUrl= post.image;
 
           const date = persianDateConverter(rawDate);
 
@@ -1317,7 +1317,7 @@
           const anonymousUserPrice = post.anonymous_user_price;
           const hasDiscount = anonymousUserPrice !== authenticatedUserPrice;
 
-          const eventElement = createEventElement(id, title, date, hasDiscount);
+          const eventElement = createEventElement(id, title, date, hasDiscount, imageUrl);
           eventSections.appendChild(eventElement);
         }
 
@@ -1349,25 +1349,25 @@
         return formattedFaDate;
       }
 
-      function createEventElement(id, title, date, hasDiscount) {
-        const discountBadge = hasDiscount
-          ? '<div class="discount-ribbon">تخفیف دانشجویی</div>'
-          : "";
+      function createEventElement(id, title, date, hasDiscount, imageUrl) {
+    const discountBadge = hasDiscount
+      ? '<div class="discount-ribbon">تخفیف دانشجویی</div>'
+      : "";
 
-        const eventElement = document.createElement("div");
-        eventElement.classList.add(
-          "gdlr-core-item-list",
-          "gdlr-core-item-pdlr",
-          "gdlr-core-item-mgb",
-          "gdlr-core-column-20"
-        );
+    const eventElement = document.createElement("div");
+    eventElement.classList.add(
+      "gdlr-core-item-list",
+      "gdlr-core-item-pdlr",
+      "gdlr-core-item-mgb",
+      "gdlr-core-column-20"
+    );
 
-        eventElement.innerHTML = `
+    eventElement.innerHTML = `
       <div class="gdlr-core-blog-modern gdlr-core-with-image gdlr-core-hover-overlay-content gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover gdlr-core-style-1 gdlr-core-outer-frame-element post-event-image">
           ${discountBadge}
           <div class="gdlr-core-blog-modern-inner">
               <div class="gdlr-core-blog-thumbnail gdlr-core-media-image">
-                  <img src="upload/post_ios.jpg" alt="" title="post-ios" />
+                  <img src="${imageUrl}" alt="${title}" title="${title}" />
               </div>
               <div class="gdlr-core-blog-modern-content gdlr-core-center-align" style="padding: 0px 30px 30px 30px;">
                   <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 20px; font-weight: 700; letter-spacing: 0px;">
@@ -1385,8 +1385,9 @@
       </div>
     `;
 
-        return eventElement;
-      }
+    return eventElement;
+}
+
 
       function createPaginationButtons(totalPosts, currentPage) {
         const totalPages = calculateTotalPages(totalPosts);
