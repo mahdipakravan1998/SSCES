@@ -1311,7 +1311,12 @@
 
           const date = persianDateConverter(rawDate);
 
-          const eventElement = createEventElement(title, date);
+          // Check if anonymousUserPrice and authenticatedUserPrice are different
+          const authenticatedUserPrice = post.authenticated_user_price;
+          const anonymousUserPrice = post.anonymous_user_price;
+          const hasDiscount = anonymousUserPrice !== authenticatedUserPrice;
+
+          const eventElement = createEventElement(title, date, hasDiscount);
           eventSections.appendChild(eventElement);
         }
 
@@ -1343,7 +1348,11 @@
         return formattedFaDate;
       }
 
-      function createEventElement(title, date) {
+      function createEventElement(title, date, hasDiscount) {
+        const discountRibbon = hasDiscount
+          ? '<div class="discount-ribbon">تخفیف دانشجویی</div>'
+          : "";
+
         const eventElement = document.createElement("div");
         eventElement.classList.add(
           "gdlr-core-item-list",
@@ -1353,25 +1362,26 @@
         );
 
         eventElement.innerHTML = `
-        <div class="gdlr-core-blog-modern gdlr-core-with-image gdlr-core-hover-overlay-content gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover gdlr-core-style-1 gdlr-core-outer-frame-element post-event-image">
-            <div class="gdlr-core-blog-modern-inner">
-                <div class="gdlr-core-blog-thumbnail gdlr-core-media-image">
-                    <img src="upload/post_ios.jpg" alt="" title="post-ios" />
-                </div>
-                <div class="gdlr-core-blog-modern-content gdlr-core-center-align" style="padding: 0px 30px 30px 30px;">
-                    <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 20px; font-weight: 700; letter-spacing: 0px;">
-                        <a href="event-registration.html" dir="rtl">${title}</a>
-                    </h3>
-                    <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
-                        <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
-                            <span class="gdlr-core-blog-info-sep">•</span>
-                            <span dir="rtl">${date}</span>
-                            <span class="gdlr-core-head"><i class="gdlr-icon-clock"></i></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="gdlr-core-blog-modern gdlr-core-with-image gdlr-core-hover-overlay-content gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover gdlr-core-style-1 gdlr-core-outer-frame-element post-event-image">
+          ${discountRibbon}
+          <div class="gdlr-core-blog-modern-inner">
+              <div class="gdlr-core-blog-thumbnail gdlr-core-media-image">
+                  <img src="upload/post_ios.jpg" alt="" title="post-ios" />
+              </div>
+              <div class="gdlr-core-blog-modern-content gdlr-core-center-align" style="padding: 0px 30px 30px 30px;">
+                  <h3 class="gdlr-core-blog-title gdlr-core-skin-title" style="font-size: 20px; font-weight: 700; letter-spacing: 0px;">
+                      <a href="event-registration.html" dir="rtl">${title}</a>
+                  </h3>
+                  <div class="gdlr-core-blog-info-wrapper gdlr-core-skin-divider">
+                      <span class="gdlr-core-blog-info gdlr-core-blog-info-font gdlr-core-skin-caption gdlr-core-blog-info-date">
+                          <span class="gdlr-core-blog-info-sep">•</span>
+                          <span dir="rtl">${date}</span>
+                          <span class="gdlr-core-head"><i class="gdlr-icon-clock"></i></span>
+                      </span>
+                  </div>
+              </div>
+          </div>
+      </div>
     `;
 
         return eventElement;
