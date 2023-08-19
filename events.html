@@ -1350,19 +1350,19 @@
       }
 
       function createEventElement(id, title, date, hasDiscount) {
-    const discountBadge = hasDiscount
-      ? '<div class="discount-ribbon">تخفیف دانشجویی</div>'
-      : "";
-  
-    const eventElement = document.createElement("div");
-    eventElement.classList.add(
-      "gdlr-core-item-list",
-      "gdlr-core-item-pdlr",
-      "gdlr-core-item-mgb",
-      "gdlr-core-column-20"
-    );
-  
-    eventElement.innerHTML = `
+        const discountBadge = hasDiscount
+          ? '<div class="discount-ribbon">تخفیف دانشجویی</div>'
+          : "";
+
+        const eventElement = document.createElement("div");
+        eventElement.classList.add(
+          "gdlr-core-item-list",
+          "gdlr-core-item-pdlr",
+          "gdlr-core-item-mgb",
+          "gdlr-core-column-20"
+        );
+
+        eventElement.innerHTML = `
       <div class="gdlr-core-blog-modern gdlr-core-with-image gdlr-core-hover-overlay-content gdlr-core-opacity-on-hover gdlr-core-zoom-on-hover gdlr-core-style-1 gdlr-core-outer-frame-element post-event-image">
           ${discountBadge}
           <div class="gdlr-core-blog-modern-inner">
@@ -1384,9 +1384,9 @@
           </div>
       </div>
     `;
-  
-    return eventElement;
-  }
+
+        return eventElement;
+      }
 
       function createPaginationButtons(totalPosts, currentPage) {
         const totalPages = calculateTotalPages(totalPosts);
