@@ -297,6 +297,15 @@ input:checked+.library-slider:before {
 	align-items: center;
 }
 
+/* Hide the number input arrows for the specific element */
+.PhoneNumber::-webkit-inner-spin-button,
+.PhoneNumber::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+
+.voluntarily-form input[type=number],
 .voluntarily-form input[type=text],
 textarea {
 	background-color: rgb(242, 242, 242) !important;
@@ -355,6 +364,134 @@ p.voluntarily-form-title {
 	flex-basis: calc(33.33% - 20px);
 	margin: 10px;
 	/* Apply a consistent margin */
+}
+
+.custom-error {
+	border: 2px solid red !important;
+}
+
+.error-list {
+	list-style-type: none;
+}
+
+.error-icon {
+	margin-bottom: 20px;
+	color: red;
+	margin-left: 20px;
+}
+
+.error-list-item {
+	display: flex;
+	align-items: center;
+}
+
+.error-text {
+	color: red;
+}
+
+.toast {
+	text-align: right;
+	position: fixed;
+	bottom: 25px;
+	right: 30px;
+	border-radius: 12px;
+	background: #fff;
+	padding: 20px 35px 20px 25px;
+	box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	transform: translateX(calc(100% + 30px));
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.toast.active {
+	transform: translateX(0%);
+}
+
+.toast .toast-content {
+	display: flex;
+	align-items: center;
+}
+
+.toast-content .check {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 35px;
+	min-width: 35px;
+	background-color: #4CAF50;
+	color: #fff;
+	font-size: 20px;
+	border-radius: 50%;
+}
+
+.toast-content .success-message {
+	display: flex;
+	flex-direction: column;
+	margin-right: 20px;
+}
+
+.success-message .success-text {
+	font-size: 16px;
+	font-weight: 400;
+	color: #666666;
+}
+
+.success-message .success-text.text-1 {
+	font-weight: 600;
+	color: #333;
+}
+
+.toast .success-close {
+	position: absolute;
+	top: 10px;
+	left: 15px;
+	padding: 5px;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.toast .success-close:hover {
+	opacity: 1;
+}
+
+.toast .success-progress {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 3px;
+	width: 100%;
+
+}
+
+.toast .success-progress:before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #4CAF50;
+}
+
+.success-progress.active:before {
+	animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+	0% {
+		left: 0%;
+	}
+	100% {
+		left: 100%;
+	}
+  }  
+
+
+@media (min-width: 767px) {
+	.active-tab-border {
+		margin-left: -2px !important;
+		border-left: 2px solid black !important;
+	}
 }
 
 /* Adjust the margin for the last row */

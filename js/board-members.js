@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const apiURL = 'http://localhost:3000/api/members'; // Use the correct URL
+    const apiURL = 'http://localhost:3000/members'; // Use the correct URL
   
     fetch(apiURL)
       .then((response) => {
