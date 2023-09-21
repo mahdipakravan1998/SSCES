@@ -1,5 +1,5 @@
-window.onload = function () {
-    // Hide the loading screen and show the content when everything is fully loaded
-    document.querySelector('.loading-screen').style.display = 'none';
-    document.querySelector('.content').style.display = 'block';
-};
+// Function to hide the preloader when the page is fully loaded
+window.addEventListener('load', function () {
+    var preloader = document.getElementById('preloader');
+    preloader.style.display = 'none';
+});
