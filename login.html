@@ -19,61 +19,77 @@
     />
   </head>
   <body>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-10 col-lg-8">
-            <div class="wrap d-md-flex">
-              <div
-                class="img custom-img"
-                style="background-image: url(upload/Ferdowsi.jpg)"
-              ></div>
-              <div class="login-wrap p-4 p-md-5 col-md-5 col-lg-5">
-                <div class="d-flex">
-                  <div class="w-100">
-                    <h3 class="mb-4">ورود</h3>
+    <div class="loading-screen">
+      <img
+        src="/images/preLoadLogo.gif"
+        alt="Loading Logo"
+        class="loading-logo"
+      />
+    </div>
+
+    <div class="content">
+      <section class="ftco-section">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+              <div class="wrap d-md-flex">
+                <div
+                  class="img custom-img"
+                  style="background-image: url(upload/Ferdowsi.jpg)"
+                ></div>
+                <div class="login-wrap p-4 p-md-5 col-md-5 col-lg-5">
+                  <div class="d-flex">
+                    <div class="w-100">
+                      <h3 class="mb-4">ورود</h3>
+                    </div>
                   </div>
-                </div>
-                <form action="#" class="signin-form mb-5">
-                  <div class="d-flex error mb-3" style="display: none !important;">
-                    <i class="fa fa-times-circle ml-2"></i>
-                    <p class="m-0">ورود نامعتبر، لطفاً دوباره سعی کنید.</p>
-                  </div>
-                  <div class="form-group mb-3">
-                    <input
-                      type="text"
-                      class="form-control custom-btn"
-                      placeholder="نام کاربری"
-                      required
-                      id="username"
-                    />
-                  </div>
-                  <div class="form-group mb-3">
-                    <input
-                      type="password"
-                      class="form-control custom-btn"
-                      placeholder="رمز عبور"
-                      required
-                      id="password"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <button
-                      type="submit"
-                      class="form-control btn btn-primary rounded submit px-3 custom-btn"
+                  <form action="#" class="signin-form mb-5">
+                    <div
+                      class="d-flex error mb-3"
+                      style="display: none !important"
                     >
-                      ورود
-                    </button>
-                  </div>
-                </form>
-                <a class="mb-3" style="text-align: center;" href="/index.html">بازگشت به صفحه اصلی</a>
+                      <i class="fa fa-times-circle ml-2"></i>
+                      <p class="m-0">ورود نامعتبر، لطفاً دوباره سعی کنید.</p>
+                    </div>
+                    <div class="form-group mb-3">
+                      <input
+                        type="text"
+                        class="form-control custom-btn"
+                        placeholder="نام کاربری"
+                        required
+                        id="username"
+                      />
+                    </div>
+                    <div class="form-group mb-3">
+                      <input
+                        type="password"
+                        class="form-control custom-btn"
+                        placeholder="رمز عبور"
+                        required
+                        id="password"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <button
+                        type="submit"
+                        class="form-control btn btn-primary rounded submit px-3 custom-btn"
+                      >
+                        ورود
+                      </button>
+                    </div>
+                  </form>
+                  <a class="mb-3" style="text-align: center" href="/index.html"
+                    >بازگشت به صفحه اصلی</a
+                  >
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
+    <script src="/js/preLoader.js"></script>
     <script src="js/login.js"></script>
   </body>
 </html>
