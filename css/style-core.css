@@ -486,6 +486,9 @@ p.voluntarily-form-title {
 	}
   }  
 
+  .hide {
+	display: none;
+  }
 
 @media (min-width: 767px) {
 	.active-tab-border {

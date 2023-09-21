@@ -1365,7 +1365,7 @@ var Froogaloop = function () {
                         bottom: 0
                     }, !t) return this;
                 if (B++, this.lgId = B, this.el = t, this.LGel = x(t), this.generateSettings(e), this.buildModules(), this.settings.dynamic && void 0 !== this.settings.dynamicEl && !Array.isArray(this.settings.dynamicEl)) throw "When using dynamic mode, you must also define dynamicEl as an Array.";
-                return this.galleryItems = this.getItems(), this.normalizeSettings(), this.init(), this.validateLicense(), this
+                return this.galleryItems = this.getItems(), this.normalizeSettings(), this.init(), this
             }
             return w.prototype.generateSettings = function (e) {
                 if (this.settings = t(t({}, I), e), this.settings.isMobile && "function" == typeof this.settings.isMobile ? this.settings.isMobile() : k()) {
@@ -1397,8 +1397,6 @@ var Froogaloop = function () {
                 this.settings.plugins.forEach((function (e) {
                     t.plugins.push(new e(t, x))
                 }))
-            }, w.prototype.validateLicense = function () {
-                this.settings.licenseKey ? "0000-0000-000-0000" === this.settings.licenseKey && console.warn("lightGallery: " + this.settings.licenseKey + " license key is not valid for production use") : console.error("Please provide a valid license key")
             }, w.prototype.getSlideItem = function (t) {
                 return x(this.getSlideItemId(t))
             }, w.prototype.getSlideItemId = function (t) {
