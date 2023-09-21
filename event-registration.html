@@ -136,22 +136,8 @@
           <div class="ssces-mobile-menu-right">
             <div
               class="tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
-              data-redirect="index.html"
-              data-ajax-url="#"
             >
-              <span class="tourmaster-user-top-bar-login" data-tmlb="login"
-                ><i class="icon_lock_alt"></i
-                ><span class="tourmaster-text">ورود</span></span
-              >
-              <div
-                class="tourmaster-lightbox-content-wrap"
-                data-tmlb-id="login"
-              >
-                <div class="tourmaster-lightbox-head">
-                  <h3 class="tourmaster-lightbox-title">ورود</h3>
-                  <i class="tourmaster-lightbox-close icon_close"></i>
-                </div>
-              </div>
+              <a href="login.html" class="tourmaster-text login-link">ورود</a>
             </div>
             <div class="ssces-mobile-menu">
               <a
@@ -166,10 +152,10 @@
               >
                 <ul id="menu-main-navigation" class="m-menu">
                   <li class="menu-item menu-item-home">
-                    <a href="index.html">صفحه اصلی</a>
+                    <a href="index.html" aria-current="page">صفحه اصلی</a>
                   </li>
                   <li class="menu-item current-menu-item">
-                    <a href="events.html" aria-current="page">رویدادها</a>
+                    <a href="events.html">رویدادها</a>
                   </li>
                   <li class="menu-item">
                     <a href="gallery.html">نگارخانه</a>
@@ -178,10 +164,10 @@
                     <a href="library.html">کتابخانه</a>
                   </li>
                   <li class="menu-item"><a href="blog.html">بلاگ</a></li>
-                  <li class="menu-item">
+                  <li class="menu-item hide">
                     <a href="board-members.html">اعضای شورا</a>
                   </li>
-                  <li class="menu-item">
+                  <li class="menu-item hide">
                     <a href="join-us.html">همکاری با ما</a>
                   </li>
                 </ul>
@@ -232,54 +218,10 @@
                   </div>
                   <div
                     class="tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
-                    data-redirect="index.html"
-                    data-ajax-url="#"
                   >
-                    <span
-                      class="tourmaster-user-top-bar-login"
-                      data-tmlb="login"
-                      ><i class="icon_lock_alt"></i
-                      ><span class="tourmaster-text">ورود</span></span
+                    <a href="login.html" class="tourmaster-text login-link"
+                      >ورود</a
                     >
-                    <div
-                      class="tourmaster-lightbox-content-wrap"
-                      data-tmlb-id="login"
-                    >
-                      <div class="tourmaster-lightbox-head">
-                        <h3 class="tourmaster-lightbox-title">ورود</h3>
-                        <i class="tourmaster-lightbox-close icon_close"></i>
-                      </div>
-                      <div class="tourmaster-lightbox-content">
-                        <form
-                          class="tourmaster-login-form tourmaster-form-field tourmaster-with-border"
-                          method="post"
-                          action=""
-                        >
-                          <div class="tourmaster-login-form-fields clearfix">
-                            <p class="tourmaster-login-pass text-right">
-                              <label>رمز عبور</label>
-                              <input type="password" name="pwd" />
-                            </p>
-                            <p class="tourmaster-login-user text-right">
-                              <label>شماره دانشجویی</label>
-                              <input type="text" name="log" />
-                            </p>
-                          </div>
-
-                          <p class="tourmaster-login-submit">
-                            <input
-                              type="submit"
-                              name="wp-submit"
-                              class="tourmaster-button"
-                              value="ورود"
-                            />
-                          </p>
-                          <!-- <p class="tourmaster-login-lost-password">
-                                                    <a href="#">Forget Password?</a>
-                                                </p> -->
-                        </form>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -328,10 +270,10 @@
                   >
                     <div class="ssces-main-menu" id="ssces-main-menu">
                       <ul id="menu-main-navigation-1" class="sf-menu">
-                        <li class="menu-item ssces-normal-menu">
+                        <li class="menu-item ssces-normal-menu hide">
                           <a href="join-us.html">همکاری با ما</a>
                         </li>
-                        <li class="menu-item ssces-normal-menu">
+                        <li class="menu-item ssces-normal-menu hide">
                           <a href="board-members.html">اعضای شورا</a>
                         </li>
                         <li class="menu-item ssces-normal-menu">
@@ -343,7 +285,9 @@
                         <li class="menu-item ssces-normal-menu">
                           <a href="gallery.html">نگارخانه</a>
                         </li>
-                        <li class="menu-item menu-item-home ssces-normal-menu">
+                        <li
+                          class="menu-item menu-item-home ssces-normal-menu"
+                        >
                           <a href="index.html">صفحه اصلی</a>
                         </li>
                       </ul>
@@ -929,7 +873,7 @@
               <div class="ssces-footer-column ssces-item-pdlr ssces-column-20">
                 <div
                   id="gdlr-core-custom-menu-widget-2"
-                  class="widget widget_gdlr-core-custom-menu-widget ssces-widget"
+                  class="widget widget_gdlr-core-custom-menu-widget ssces-widget hide"
                 >
                   <h1 class="ssces-widget-title">همکاری با ما</h1>
                   <span class="clear"></span>
@@ -1172,104 +1116,7 @@
       id="gdlr-core-page-builder-js"
     ></script>
 
-    <script>
-      function getEventIdFromUrl() {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const eventId = urlParams.get("eventID");
-
-        // Ensure eventId is a number and not null
-        if (!isNaN(eventId) && eventId !== null) {
-          return parseInt(eventId, 10); // Parse eventId as an integer
-        } else {
-          console.error("Invalid event ID in URL.");
-          return null;
-        }
-      }
-
-      async function fetchEventDetails(eventId) {
-        const apiUrl = `https://ssces-fum.ir/events/events/${eventId}/`;
-
-        try {
-          const response = await fetch(apiUrl);
-          const eventData = await response.json();
-          return eventData;
-        } catch (error) {
-          console.error("Error fetching event data:", error);
-          return null;
-        }
-      }
-
-      async function populateEventPage() {
-        const eventId = getEventIdFromUrl(); // Implement a function to get event ID from URL
-        const event = await fetchEventDetails(eventId);
-
-        if (event) {
-          const titleElement = document.querySelector(
-            ".tourmaster-room-title-item-title"
-          );
-          const dateElement = document.querySelector(
-            ".gdlr-core-column-service-caption.date"
-          );
-          const authenticatedPriceElement = document.querySelector(
-            ".gdlr-core-column-service-caption.authenticated-price"
-          );
-          const anonymousPriceElement = document.querySelector(
-            ".gdlr-core-column-service-caption.anonymous-price"
-          );
-          const descriptionElement =
-            document.querySelector(".event-description");
-          const pageTitle = document.querySelector(".ssces-page-title");
-          const poster = document.querySelector(".single-post-image");
-          const backgroundPoster = document.querySelector(
-            ".custom-event-registration-bg"
-          );
-
-          const posterUrl = event.image;
-
-          backgroundPoster.style.cssText += `background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${posterUrl}) !important;`;
-          poster.src = posterUrl;
-          document.title = event.title;
-          pageTitle.textContent = event.title;
-          titleElement.textContent = event.title;
-          dateElement.textContent = persianDateConverter(event.date);
-          authenticatedPriceElement.textContent =
-            event.authenticated_user_price + " هزار تومان";
-          anonymousPriceElement.textContent =
-            event.anonymous_user_price + " هزار تومان";
-          descriptionElement.innerHTML = event.description;
-        } else {
-          console.error("Event details not found.");
-        }
-      }
-
-      function getFaFormattedDate(inputDate) {
-        const dayMonth = getDateFormat(inputDate, {
-          day: "2-digit",
-          month: "long",
-        });
-
-        const year = getDateFormat(inputDate, {
-          year: "numeric",
-        });
-
-        return `${dayMonth} ${year}`;
-      }
-
-      function getDateFormat(uDate, option) {
-        let date = new Intl.DateTimeFormat("fa-IR", option).format(uDate);
-        return date;
-      }
-
-      function persianDateConverter(gregorianDate) {
-        const inputDate = new Date(gregorianDate);
-        const formattedFaDate = getFaFormattedDate(inputDate);
-
-        return formattedFaDate;
-      }
-
-      // Call the function to populate the page content
-      populateEventPage();
-    </script>
+    <script src="/js/event-registration.js"></script>
+    <script src="/js/authenticatedUser.js"></script>
   </body>
 </html>

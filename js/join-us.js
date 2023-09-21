@@ -236,19 +236,21 @@ async function handleSubmit(event) {
   };
 
   try {
-    const response = await fetch("http://localhost:3000/cooperation", {
+    const response = await fetch("https://ssces-fum.ir/cooperation/cooperation_replies/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${getCookie("access_token")}`, // Get the access token from the cookie
       },
       body: JSON.stringify(data),
     });
-
+  
     const result = await response.json();
-
-    if (response.status === 200) {
+  
+    if (response.status === 201) {
       handleSuccess();
-    } else {
+    } else if (response.status === 500) {
+      console.log(response.status);
       console.error("Error sending data to server:", result);
       // Handle other error cases
     }
@@ -263,3 +265,10 @@ document.addEventListener("click", (event) => {
     handleSubmit(event);
   }
 });
+
+// Function to get a cookie by name
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+}

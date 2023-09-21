@@ -136,22 +136,8 @@
           <div class="ssces-mobile-menu-right">
             <div
               class="tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
-              data-redirect="index.html"
-              data-ajax-url="#"
             >
-              <span class="tourmaster-user-top-bar-login" data-tmlb="login"
-                ><i class="icon_lock_alt"></i
-                ><span class="tourmaster-text">ورود</span></span
-              >
-              <div
-                class="tourmaster-lightbox-content-wrap"
-                data-tmlb-id="login"
-              >
-                <div class="tourmaster-lightbox-head">
-                  <h3 class="tourmaster-lightbox-title">ورود</h3>
-                  <i class="tourmaster-lightbox-close icon_close"></i>
-                </div>
-              </div>
+              <a href="login.html" class="tourmaster-text login-link">ورود</a>
             </div>
             <div class="ssces-mobile-menu">
               <a
@@ -166,7 +152,7 @@
               >
                 <ul id="menu-main-navigation" class="m-menu">
                   <li class="menu-item menu-item-home">
-                    <a href="index.html">صفحه اصلی</a>
+                    <a href="index.html" aria-current="page">صفحه اصلی</a>
                   </li>
                   <li class="menu-item">
                     <a href="events.html">رویدادها</a>
@@ -178,11 +164,11 @@
                     <a href="library.html">کتابخانه</a>
                   </li>
                   <li class="menu-item"><a href="blog.html">بلاگ</a></li>
-                  <li class="menu-item">
+                  <li class="menu-item hide">
                     <a href="board-members.html">اعضای شورا</a>
                   </li>
-                  <li class="menu-item current-menu-item">
-                    <a href="join-us.html" aria-current="page">همکاری با ما</a>
+                  <li class="menu-item current-menu-item hide">
+                    <a href="join-us.html">همکاری با ما</a>
                   </li>
                 </ul>
               </div>
@@ -232,54 +218,10 @@
                   </div>
                   <div
                     class="tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
-                    data-redirect="index.html"
-                    data-ajax-url="#"
                   >
-                    <span
-                      class="tourmaster-user-top-bar-login"
-                      data-tmlb="login"
-                      ><i class="icon_lock_alt"></i
-                      ><span class="tourmaster-text">ورود</span></span
+                    <a href="login.html" class="tourmaster-text login-link"
+                      >ورود</a
                     >
-                    <div
-                      class="tourmaster-lightbox-content-wrap"
-                      data-tmlb-id="login"
-                    >
-                      <div class="tourmaster-lightbox-head">
-                        <h3 class="tourmaster-lightbox-title">ورود</h3>
-                        <i class="tourmaster-lightbox-close icon_close"></i>
-                      </div>
-                      <div class="tourmaster-lightbox-content">
-                        <form
-                          class="tourmaster-login-form tourmaster-form-field tourmaster-with-border"
-                          method="post"
-                          action=""
-                        >
-                          <div class="tourmaster-login-form-fields clearfix">
-                            <p class="tourmaster-login-pass text-right">
-                              <label>رمز عبور</label>
-                              <input type="password" name="pwd" />
-                            </p>
-                            <p class="tourmaster-login-user text-right">
-                              <label>شماره دانشجویی</label>
-                              <input type="text" name="log" />
-                            </p>
-                          </div>
-
-                          <p class="tourmaster-login-submit">
-                            <input
-                              type="submit"
-                              name="wp-submit"
-                              class="tourmaster-button"
-                              value="ورود"
-                            />
-                          </p>
-                          <!-- <p class="tourmaster-login-lost-password">
-                                                    <a href="#">Forget Password?</a>
-                                                </p> -->
-                        </form>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -328,12 +270,10 @@
                   >
                     <div class="ssces-main-menu" id="ssces-main-menu">
                       <ul id="menu-main-navigation-1" class="sf-menu">
-                        <li
-                          class="menu-item ssces-normal-menu current-menu-item"
-                        >
+                        <li class="menu-item ssces-normal-menu current-menu-item hide">
                           <a href="join-us.html">همکاری با ما</a>
                         </li>
-                        <li class="menu-item ssces-normal-menu">
+                        <li class="menu-item ssces-normal-menu hide">
                           <a href="board-members.html">اعضای شورا</a>
                         </li>
                         <li class="menu-item ssces-normal-menu">
@@ -345,7 +285,9 @@
                         <li class="menu-item ssces-normal-menu">
                           <a href="gallery.html">نگارخانه</a>
                         </li>
-                        <li class="menu-item menu-item-home ssces-normal-menu">
+                        <li
+                          class="menu-item menu-item-home ssces-normal-menu"
+                        >
                           <a href="index.html">صفحه اصلی</a>
                         </li>
                       </ul>
@@ -804,7 +746,7 @@
               <div class="ssces-footer-column ssces-item-pdlr ssces-column-20">
                 <div
                   id="gdlr-core-custom-menu-widget-2"
-                  class="widget widget_gdlr-core-custom-menu-widget ssces-widget"
+                  class="widget widget_gdlr-core-custom-menu-widget ssces-widget hide"
                 >
                   <h1 class="ssces-widget-title">همکاری با ما</h1>
                   <span class="clear"></span>
@@ -926,5 +868,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="/js/join-us.js"></script>
+    <script src="/js/authenticatedUser.js"></script>
   </body>
 </html>
