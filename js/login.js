@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }),
       });
 
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         hideError();
         
         const data = await response.json();

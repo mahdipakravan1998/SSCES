@@ -481,14 +481,29 @@ p.voluntarily-form-title {
 	0% {
 		left: 0%;
 	}
+
 	100% {
 		left: 100%;
 	}
-  }  
+}
 
-  .hide {
+.hide {
 	display: none !important;
-  }
+}
+
+.success-msg {
+	display: flex;
+	align-items: center;
+	padding: 16px;
+	background-color: #DFF2BF;
+	color: #270;
+	border-radius: 5px;
+}
+
+.success-msg-text {
+	margin-bottom: 0px !important;
+	margin-right: 16px
+}
 
 @media (min-width: 767px) {
 	.active-tab-border {

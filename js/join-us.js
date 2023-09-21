@@ -70,6 +70,7 @@ async function initializeTabContent(data) {
 async function populateContent() {
   const data = await fetchData();
   initializeTabContent(data);
+  fetchDataAndUpdateForms();
 }
 
 window.addEventListener("load", populateContent);
@@ -98,6 +99,57 @@ $(document).ready(function () {
     ).show();
   });
 });
+
+// Function to replace form content with success message
+function replaceFormWithSuccess(formId) {
+  const formElement = document.querySelector(
+    `[data-tab-id="${formId}"] .voluntarily-form`
+  );
+  if (formElement) {
+    formElement.innerHTML = `
+        <div class="success-msg">
+          <i class="fa fa-check"></i>
+          <p class="success-msg-text">
+            از وقتی که گذاشتید سپاسگزاریم! پاسخ شما دریافت شد و در حال پردازش است.
+          </p>
+        </div>`;
+  }
+}
+
+// Function to fetch API data and update forms
+async function fetchDataAndUpdateForms() {
+  console.log("Fetching");
+  try {
+    // Make a GET request to the API
+    const response = await fetch(
+      "https://ssces-fum.ir/cooperation/cooperation_replies/",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getCookie("access_token")}`, // Get the access token from the cookie
+        },
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch data from the API");
+    }
+
+    // Parse the JSON response
+    const data = await response.json();
+
+    // Create an object to store form numbers based on cooperation values
+    const formNumbers = {};
+
+    // Iterate through API responses and collect unique cooperation values
+    data.results.forEach((response) => {
+      const cooperationValue = response.cooperation;
+      // Replace the form content with a success message
+      replaceFormWithSuccess(cooperationValue);
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
 
 function setInvalidInput(inputElement, placeholderText) {
   inputElement.setAttribute("style", "border: 2px solid red !important;");
@@ -152,6 +204,10 @@ function handleSuccess() {
     clearTimeout(timer1);
     clearTimeout(timer2);
   });
+
+  setTimeout(function () {
+    location.reload();
+  }, 6000);
 }
 
 // Function to handle form submission
@@ -236,17 +292,20 @@ async function handleSubmit(event) {
   };
 
   try {
-    const response = await fetch("https://ssces-fum.ir/cooperation/cooperation_replies/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${getCookie("access_token")}`, // Get the access token from the cookie
-      },
-      body: JSON.stringify(data),
-    });
-  
+    const response = await fetch(
+      "https://ssces-fum.ir/cooperation/cooperation_replies/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getCookie("access_token")}`, // Get the access token from the cookie
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
     const result = await response.json();
-  
+
     if (response.status === 201) {
       handleSuccess();
     } else if (response.status === 500) {

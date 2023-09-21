@@ -20,9 +20,6 @@ function getCookie(name) {
 if (isLoggedIn()) {
   setLoggedInState();
   removeHiddenElements();
-  console.log("User is logged in.");
-} else {
-  console.log("User is not logged in.");
 }
 
 function setLoggedInState() {
@@ -57,3 +54,88 @@ function removeHiddenElements() {
     element.classList.remove("hide");
   });
 }
+
+function setTokens(access, refresh) {
+  document.cookie = `access_token=${access}; Secure;`;
+  document.cookie = `refresh_token=${refresh}; Secure;`;
+}
+
+async function refreshAccessToken(refreshToken) {
+  try {
+    const response = await fetch("https://ssces-fum.ir/users/token/refresh/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ refresh: refreshToken }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to refresh access token");
+    }
+
+    const data = await response.json();
+    return data.access;
+  } catch (error) {
+    console.error("Error refreshing access token:", error);
+    throw error;
+  }
+}
+
+function getAccessToken() {
+  const cookies = document.cookie.split("; ");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split("=");
+    if (name === "access_token") {
+      return value;
+    }
+  }
+  return null;
+}
+
+function getRefreshToken() {
+  const cookies = document.cookie.split("; ");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split("=");
+    if (name === "refresh_token") {
+      return value;
+    }
+  }
+  return null;
+}
+
+function checkTokenExpiration() {
+  const accessToken = getAccessToken();
+  if (!accessToken) {
+    console.error("Access token not found");
+    return;
+  }
+
+  const decodedToken = decodeAccessToken(accessToken);
+  const currentTime = Math.floor(Date.now() / 1000);
+
+  // Check if the token is about to expire (e.g., within the next (5 * 60) seconds)
+  if (decodedToken.exp - currentTime <= 300) {
+    const refreshToken = getRefreshToken();
+    if (refreshToken) {
+      refreshAccessToken(refreshToken)
+        .then((newAccessToken) => {
+          setTokens(newAccessToken, refreshToken);
+          console.log("Access token refreshed successfully");
+        })
+        .catch((error) => {
+          console.error("Failed to refresh access token:", error);
+        });
+    } else {
+      console.error("Refresh token not found");
+    }
+  }
+}
+
+function decodeAccessToken(accessToken) {
+  const tokenPayload = accessToken.split(".")[1];
+  return JSON.parse(atob(tokenPayload));
+}
+
+const refreshTokenInterval = 5 * 60 * 1000;
+setInterval(checkTokenExpiration, refreshTokenInterval); // Check every (5 * 60) seconds
