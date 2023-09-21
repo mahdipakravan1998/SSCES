@@ -35,7 +35,7 @@ async function initializeTabContent(data) {
           <div>
               <p class="voluntarily-form-title">${item.description}</p>
               <div class="voluntarily-form-group-input">
-                  <input type="number" name="PhoneNumber${item.id}" placeholder="تلفن همراه:" class="input PhoneNumber voluntarily-form-input-item"/>
+                  <input type="tel" name="PhoneNumber${item.id}" placeholder="تلفن همراه:" class="input PhoneNumber voluntarily-form-input-item"/>
                   <input type="text" name="Email${item.id}" placeholder="ایمیل:" class="input voluntarily-form-input-item"/>
               </div>
               <ul style="display: none;" class="error-list" id="INVALID_INPUT">

@@ -305,7 +305,7 @@ input:checked+.library-slider:before {
 }
 
 
-.voluntarily-form input[type=number],
+.voluntarily-form input[type=tel],
 .voluntarily-form input[type=text],
 textarea {
 	background-color: rgb(242, 242, 242) !important;
