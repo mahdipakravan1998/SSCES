@@ -11,7 +11,7 @@ function isLoggedIn() {
     return true;
   } else {
     // Check if the current page is restricted
-    if (restrictedPages.includes(currentPage)) {
+    if (restrictedPages.some(page => currentPage.endsWith(page))) {
       // Redirect to the 404 page
       window.location.href = "404.html";
     }
