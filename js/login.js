@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (response.status === 200 || response.status === 201) {
-        hideError();
+        hideErrors();
         
         const data = await response.json();
 
@@ -38,24 +38,39 @@ document.addEventListener("DOMContentLoaded", function () {
         // Redirect to the main page (index.html)
         window.location.href = "index.html";
       } else {
-        errorHandler();
+        hideErrors();
+        checkCredentials();
         console.log("Login failed. Please check your credentials.");
         return;
       }
     } catch (error) {
-      errorHandler();
+      hideErrors();
+      checkConnection();
       console.log("An error occurred during login.");
       return;
     }
   });
 });
 
-function errorHandler() {
-  const errorElement = document.querySelector(".error");
-  errorElement.removeAttribute("style"); 
+function checkCredentials() {
+  showError("credentials-error");
 }
 
-function hideError() {
-  const errorElement = document.querySelector(".error");
+function checkConnection() {
+  showError("connection-error");
+}
+
+function hideErrors() {
+  hideError("credentials-error");
+  hideError("connection-error");
+}
+
+function showError(errorId) {
+  const errorElement = document.querySelector(`#${errorId}`);
+  errorElement.removeAttribute("style");
+}
+
+function hideError(errorId) {
+  const errorElement = document.querySelector(`#${errorId}`);
   errorElement.setAttribute("style", "display: none !important;");
 }

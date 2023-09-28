@@ -36,12 +36,23 @@
                 </div>
                 <form action="#" class="signin-form mb-5">
                   <div
+                    id="credentials-error"
                     class="d-flex error mb-3"
                     style="display: none !important"
                   >
                     <i class="fa fa-times-circle ml-2"></i>
                     <p class="m-0">ورود نامعتبر، لطفاً دوباره سعی کنید.</p>
                   </div>
+
+                  <div
+                    id="connection-error"
+                    class="d-flex error mb-3"
+                    style="display: none !important"
+                  >
+                    <i class="fa fa-times-circle ml-2"></i>
+                    <p class="m-0">لطفاً اتصال اینترنتی خود را بررسی کرده و اطمینان حاصل کنید که به VPN متصل نیستید.</p>
+                  </div>
+
                   <div class="form-group mb-3">
                     <input
                       type="text"

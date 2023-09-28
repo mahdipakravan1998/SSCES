@@ -11929,14 +11929,18 @@
   
   @media (min-width: 767.98px) {
     .custom-img {
-      height: 480px;
+      height: 539px;
+    }
+
+    .img {
+      background-position: top right 30%;
     }
   }
 
   @media (min-width: 1199.98px) {
   
     .custom-img {
-      height: 456px;
+      height: 476px;
     }
   }
 
