@@ -1,7 +1,22 @@
+// Define a list of restricted page URLs
+const restrictedPages = ["join-us.html", "board-members.html"]; // Add other restricted pages as needed
+
 // Function to check if the user is logged in
 function isLoggedIn() {
   const accessToken = getCookie("access_token");
-  return !!accessToken; // Return true if the access token is present, otherwise false
+  const currentPage = window.location.pathname;
+
+  // Check if the user is authenticated
+  if (!!accessToken) {
+    return true;
+  } else {
+    // Check if the current page is restricted
+    if (restrictedPages.includes(currentPage)) {
+      // Redirect to the 404 page
+      window.location.href = "404.html";
+    }
+    return false;
+  }
 }
 
 // Function to retrieve a cookie value by name (similar to the one used in login.js)
