@@ -1,17 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "package.json", "use": "@vercel/node" },
-    { "src": "public/**", "use": "@vercel/static" }
-  ],
   "routes": [
     {
-      "src": "/404",
-      "dest": "/404.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/"
+      "source": "/(.*)",
+      "destination": "/404.html"
     }
   ]
 }
