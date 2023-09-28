@@ -523,6 +523,11 @@ p.voluntarily-form-title {
 	height: 100px;
 }
 
+.login-line {
+	border-right: 2px solid;
+	padding-right: 8px;
+}
+
 @media (min-width: 767px) {
 	.active-tab-border {
 		margin-left: -2px !important;
