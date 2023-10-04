@@ -550,7 +550,7 @@ p.voluntarily-form-title {
 	background-color: white;
 	min-width: 200px;
 	border-radius: 4px;
-	box-shadow: 0 2px 20px rgba(5,5,5,.08);
+	box-shadow: 0 2px 20px rgba(5, 5, 5, .08);
 	z-index: 999;
 	opacity: 0;
 	visibility: hidden;
@@ -586,7 +586,7 @@ p.voluntarily-form-title {
 	margin-bottom: 0;
 }
 
-.student-id	{
+.student-id {
 	color: #565869;
 	font-size: 13px;
 	font-weight: 400;
@@ -607,18 +607,18 @@ p.voluntarily-form-title {
 
 .menu-separator {
 	border-top: 1px solid #ececf1;
-    margin: 5px 0;
+	margin: 5px 0;
 }
 
 .mm-listview {
 	text-align: right;
 }
 
-.menu-item .student-name{
+.menu-item .student-name {
 	color: #979797;
 }
 
-.menu-item .student-id{
+.menu-item .student-id {
 	color: #979797;
 }
 
@@ -632,6 +632,98 @@ p.voluntarily-form-title {
 
 .logo-color {
 	filter: invert(9%) sepia(63%) saturate(1248%) hue-rotate(167deg) brightness(95%) contrast(98%);
+}
+
+.info-table-container {
+	margin-right: 15px;
+	width: max-content;
+	display: flex;
+	flex-direction: column;
+	border-radius: 8px;
+	border: 1px solid #e1e3e1;
+	padding: 0 32px 0 0;
+	overflow: auto;
+}
+
+.info-table {
+	display: flex;
+	flex-direction: column;
+}
+
+.info-table-row {
+	display: flex;
+	justify-content: flex-start;
+	padding-top: 15px;
+	padding-bottom: 16px;
+	align-items: center;
+	word-break: break-word;
+}
+
+.info-table-row:not(:first-child) {
+	border-top: 1px solid #e1e3e1;
+}
+
+.info-table-header {
+	text-align: right;
+	font-weight: bold;
+	margin-left: 44px;
+	flex-basis: 156px;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 0.1px;
+	line-height: 16px;
+	text-transform: none;
+	hyphens: auto;
+	word-break: break-word;
+	word-wrap: break-word;
+	color: #444746;
+}
+
+.info-table-cell {
+	width: 350px;
+	text-align: right;
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 0;
+	line-height: 24px;
+	hyphens: auto;
+	word-break: break-word;
+	word-wrap: break-word;
+	color: #1f1f1f;
+}
+
+@media (max-width: 767px) {
+	.info-table-container {
+		margin-right: 0;
+		flex-direction: row;
+		overflow-x: auto;
+		padding: 0 16px 0 0;
+	}
+
+	.info-table {
+		flex-direction: column;
+		width: max-content;
+	}
+
+	.info-table-row {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 8px 8px 8px 128px;
+	}
+
+	.info-table-header {
+		flex-basis: 0;
+	}
+
+	.info-table-cell {
+		width: fit-content;
+	}
+
+	.info-table-header,
+	.info-table-cell {
+		margin-left: 0;
+		padding: 8px 0 8px 0;
+	}
 }
 
 @media (min-width: 767px) {

@@ -231,9 +231,7 @@
                   <div
                     class="login-link tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
                   >
-                    <a
-                      href="login.html"
-                      class="tourmaster-text login-line"
+                    <a href="login.html" class="tourmaster-text login-line"
                       >ورود</a
                     >
                   </div>
@@ -242,13 +240,18 @@
                     <a class="user-dropdown-button" id="user-dropdown-button"
                       >حساب کاربری <i class="fa fa-user user-icon"></i
                     ></a>
-                    <div class="user-dropdown-content" id="user-dropdown-content">
+                    <div
+                      class="user-dropdown-content"
+                      id="user-dropdown-content"
+                    >
                       <div class="user-info">
                         <p class="student-name">نام کاربری</p>
                         <p class="student-id">شماره دانشجویی</p>
                       </div>
                       <div class="menu-separator"></div>
-                      <a class="user-menu-item" href="dashboard.html">داشبورد</a>
+                      <a class="user-menu-item" href="dashboard.html"
+                        >داشبورد</a
+                      >
                       <a class="user-menu-item logout-link" href="#">خروج</a>
                     </div>
                   </div>
@@ -299,9 +302,7 @@
                   >
                     <div class="ssces-main-menu" id="ssces-main-menu">
                       <ul id="menu-main-navigation-1" class="sf-menu">
-                        <li
-                          class="menu-item ssces-normal-menu current-menu-item hide"
-                        >
+                        <li class="menu-item ssces-normal-menu hide">
                           <a href="join-us.html">همکاری با ما</a>
                         </li>
                         <li class="menu-item ssces-normal-menu hide">
@@ -361,7 +362,7 @@
           ></div>
           <div class="ssces-page-title-container ssces-container">
             <div class="ssces-page-title-content ssces-item-pdlr">
-              <h1 class="ssces-page-title">همکاری با ما</h1>
+              <h1 class="ssces-page-title">داشبورد</h1>
             </div>
           </div>
         </div>
@@ -387,17 +388,17 @@
                           class="gdlr-core-tab-item-title gdlr-core-active"
                           data-tab-id="1"
                         >
-                          فعالیت‌های داوطلبانه
+                          اطلاعات شخصی
                         </div>
                         <div class="gdlr-core-tab-item-title" data-tab-id="2">
-                          درخواست تدریس
+                          رویدادها
                         </div>
                         <div class="gdlr-core-tab-item-title" data-tab-id="3">
-                          انتقادات و پیشنهادات
+                          همکاری با ما
                         </div>
-                        <!-- <div
-                    class="gdlr-core-tab-item-title-line gdlr-core-skin-divider"
-                  ></div> -->
+                        <div
+                          class="gdlr-core-tab-item-title-line gdlr-core-skin-divider"
+                        ></div>
                       </div>
                       <div
                         id="tabContents"
@@ -408,102 +409,26 @@
                           data-tab-id="1"
                           style="color: #6b6b6b"
                         >
-                          <div
-                            class="voluntarily-form wpcf7"
-                            style="max-width: 760px; margin: auto"
-                          >
-                            <form method="post" action="">
-                              <p class="voluntarily-form-title">
-                                سلام دوستان عزیز،
-                                <br />
-                                این فرم به منظور استعدادیابی برای انجام
-                                فعالیت‌های داوطلبانه در انجمن علمی گروه کامپیوتر
-                                دانشگاه فردوسی مشهد طراحی شده است. ما در اینجا
-                                با هدف کسب تجربه و یادگیری مشترک، به دنبال ایجاد
-                                فرصت‌های مفید و سودمند برای همدیگر هستیم.
-                                <br />
-                                لطفا در این فرم، نیازمندی‌ها و توانایی‌های خود
-                                را برای انجام فعالیت‌های داوطلبانه در این انجمن
-                                به ما اطلاع دهید. این فرم، ابزاری برای شناسایی
-                                استعدادها و مهارت‌های شماست و به ما کمک می‌کند
-                                تا بتوانیم فعالیت‌های مناسب و بهینه برای شما
-                                ارائه کنیم.
-                                <br />
-                                با تشکر از همراهی شما.
-                              </p>
-
-                              <div class="voluntarily-form-group-input">
-                                <input
-                                  type="tel"
-                                  name="PhoneNumber1"
-                                  id="PhoneNumber1"
-                                  placeholder="تلفن همراه:"
-                                  class="input PhoneNumber voluntarily-form-input-item"
-                                />
-                                <input
-                                  type="text"
-                                  name="Email1"
-                                  id="Email1"
-                                  placeholder="ایمیل:"
-                                  class="input voluntarily-form-input-item"
-                                />
-                              </div>
-
-                              <ul
-                                style="display: none"
-                                class="error-list"
-                                id="INVALID_INPUT"
-                              >
-                                <li
-                                  style="display: none"
-                                  class="error-list-item"
-                                  id="INVALID_PHONE"
-                                >
-                                  <i
-                                    class="fa fa-exclamation-circle error-icon"
-                                  ></i>
-                                  <p class="error-text">
-                                    شماره تلفن وارد شده معتبر نیست. (مثال:
-                                    +989123456789 یا 09123456789)
-                                  </p>
-                                </li>
-                                <li
-                                  style="display: none"
-                                  class="error-list-item"
-                                  id="INVALID_EMAIL"
-                                >
-                                  <i
-                                    class="fa fa-exclamation-circle error-icon"
-                                  ></i>
-                                  <p class="error-text">
-                                    ایمیل وارد شده معتبر نیست. (مثال:
-                                    example@email.com)
-                                  </p>
-                                </li>
-                              </ul>
-
-                              <p>
-                                لطفا در درخواست خود، به طور خلاصه توضیح دهید که
-                                چه نوع فعالیت‌هایی را تمایل دارید انجام دهید و
-                                چرا. همچنین می‌توانید تجربیات قبلی خود در این
-                                زمینه را نیز به اشتراک بگذارید.
-                              </p>
-
-                              <textarea
-                                name="Message1"
-                                id="Message1"
-                                placeholder="لطفاً علاقه‌مندی‌های داوطلبانه و تجربیات مرتبط خود را شرح دهید"
-                                class="input"
-                              ></textarea>
-
-                              <input
-                                type="submit"
-                                name="submit1"
-                                value="ثبت"
-                                class="submit-button"
-                              />
-                            </form>
+                        <div class="info-table-container">
+                          <div class="info-table">
+                            <div class="info-table-row">
+                              <div class="info-table-header">نام کاربری</div>
+                              <div class="info-table-cell">mahdi</div>
+                            </div>
+                            <div class="info-table-row">
+                              <div class="info-table-header">نام و نام خانوادگی</div>
+                              <div class="info-table-cell">مهدی پاکروان</div>
+                            </div>
+                            <div class="info-table-row">
+                              <div class="info-table-header">شماره همراه</div>
+                              <div class="info-table-cell">09981089917</div>
+                            </div>
+                            <div class="info-table-row">
+                              <div class="info-table-header">شماره دانشجویی</div>
+                              <div class="info-table-cell">9622762306</div>
+                            </div>
                           </div>
+                        </div>
                         </div>
                         <div
                           class="gdlr-core-tab-item-content"
@@ -662,7 +587,7 @@
                 >
                   <figure class="wp-block-image size-full is-resized">
                     <img
-                    alt="ssces logo"
+                      alt="ssces logo"
                       loading="lazy"
                       src="upload/sscesLogo.png"
                       width="149"
@@ -723,20 +648,20 @@
                 <div
                   class="widget widget_block widget_media_image ssces-widget"
                 >
-                <img
-                alt="engineering faculty logo"
-                class="logo logo-color"
-                loading="lazy"
-                src="upload/engineering-faculty-logo.svg"
-                style="margin-left: 16px;"
-              />
+                  <img
+                    alt="engineering faculty logo"
+                    class="logo logo-color"
+                    loading="lazy"
+                    src="upload/engineering-faculty-logo.svg"
+                    style="margin-left: 16px"
+                  />
 
-              <img
-                alt="fum logo"
-                class="logo logo-color"
-                loading="lazy"
-                src="upload/fum-logo.svg"
-              />
+                  <img
+                    alt="fum logo"
+                    class="logo logo-color"
+                    loading="lazy"
+                    src="upload/fum-logo.svg"
+                  />
                 </div>
               </div>
 
@@ -917,7 +842,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="/js/join-us.js"></script>
+    <!-- <script src="/js/join-us.js"></script> -->
     <script src="/js/authenticatedUser.js"></script>
   </body>
 </html>
