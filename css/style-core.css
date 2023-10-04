@@ -528,6 +528,112 @@ p.voluntarily-form-title {
 	padding-right: 8px;
 }
 
+/* Style the container for the dropdown */
+.user-dropdown {
+	position: relative;
+	display: none;
+	margin-left: 32px;
+}
+
+/* Style the button that will open the dropdown */
+.user-dropdown-button {
+	cursor: pointer;
+}
+
+/* Style the dropdown content (hidden by default) */
+.user-dropdown-content {
+	padding: 5px 0;
+	right: 0;
+	text-align: right;
+	margin-top: 8px;
+	position: absolute;
+	background-color: white;
+	min-width: 200px;
+	border-radius: 4px;
+	box-shadow: 0 2px 20px rgba(5,5,5,.08);
+	z-index: 999;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+/* Style the dropdown options */
+.user-dropdown-content a {
+	padding: .4em 1em;
+	text-decoration: none;
+	display: block;
+}
+
+/* Change color of dropdown options on hover */
+.user-dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+/* Show the dropdown content with animation when the button is clicked */
+.user-dropdown.open .user-dropdown-content {
+	opacity: 1;
+	visibility: visible;
+}
+
+.user-icon {
+	margin-left: 8px;
+}
+
+.student-name {
+	color: #202123;
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 0;
+}
+
+.student-id	{
+	color: #565869;
+	font-size: 13px;
+	font-weight: 400;
+	margin-top: 3px;
+	margin-bottom: 0;
+}
+
+.user-info {
+	padding: .4em 1em;
+}
+
+.user-menu-item {
+	box-sizing: border-box;
+	font-size: 14px;
+	color: #202123 !important;
+	text-decoration: none;
+}
+
+.menu-separator {
+	border-top: 1px solid #ececf1;
+    margin: 5px 0;
+}
+
+.mm-listview {
+	text-align: right;
+}
+
+.menu-item .student-name{
+	color: #979797;
+}
+
+.menu-item .student-id{
+	color: #979797;
+}
+
+.logout-link {
+	cursor: pointer;
+}
+
+.logo {
+	width: 64px !important;
+}
+
+.logo-color {
+	filter: invert(9%) sepia(63%) saturate(1248%) hue-rotate(167deg) brightness(95%) contrast(98%);
+}
+
 @media (min-width: 767px) {
 	.active-tab-border {
 		margin-left: -2px !important;

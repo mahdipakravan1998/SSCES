@@ -1,5 +1,9 @@
 // Define a list of restricted page URLs
-const restrictedPages = ["join-us.html", "board-members.html"]; // Add other restricted pages as needed
+const restrictedPages = [
+  "join-us.html",
+  "board-members.html",
+  "dashboard.html",
+]; // Add other restricted pages as needed
 
 // Function to check if the user is logged in
 function isLoggedIn() {
@@ -11,7 +15,7 @@ function isLoggedIn() {
     return true;
   } else {
     // Check if the current page is restricted
-    if (restrictedPages.some(page => currentPage.endsWith(page))) {
+    if (restrictedPages.some((page) => currentPage.endsWith(page))) {
       // Redirect to the 404 page
       window.location.href = "404.html";
     }
@@ -31,22 +35,36 @@ function getCookie(name) {
   return null;
 }
 
-// Check if the user is logged in
-if (isLoggedIn()) {
-  setLoggedInState();
-  removeHiddenElements();
+// Function to update the UI when the user is logged in
+function updateUIForLoggedInUser() {
+  const loginElements = document.querySelectorAll(".login-link");
+  const userDropdown = document.querySelector(".user-dropdown");
+  const logoutLinks = document.querySelectorAll(".logout-link");
+
+  if (loginElements) {
+    loginElements.forEach((link) => {
+      link.classList.add("hide");
+    });
+  }
+
+  if (userDropdown) {
+    userDropdown.style.display = "inline-block"; // Show the user dropdown
+  }
+
+  if (logoutLinks) {
+    logoutLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        logout(); // Call your logout function when "خروج" is clicked
+      });
+    });
+  }
 }
 
-function setLoggedInState() {
-  const loginLinks = document.querySelectorAll(".login-link");
-
-  loginLinks.forEach((link) => {
-    link.textContent = "خروج";
-    link.href = "index.html";
-    link.addEventListener("click", () => {
-      logout();
-    });
-  });
+// Check if the user is logged in
+if (isLoggedIn()) {
+  removeHiddenElements();
+  updateUIForLoggedInUser();
+  updateUserInfoFromAPI();
 }
 
 function logout() {
@@ -154,3 +172,60 @@ function decodeAccessToken(accessToken) {
 
 const refreshTokenInterval = 5 * 60 * 1000;
 setInterval(checkTokenExpiration, refreshTokenInterval); // Check every (5 * 60) seconds
+
+// JavaScript dropdown
+const button = document.getElementById("user-dropdown-button");
+const dropdown = document.querySelector(".user-dropdown");
+
+button.addEventListener("click", function (event) {
+  event.preventDefault();
+  dropdown.classList.toggle("open");
+});
+
+// Close the dropdown when clicking outside of it
+window.addEventListener("click", function (event) {
+  if (!dropdown.contains(event.target) && dropdown.classList.contains("open")) {
+    dropdown.classList.remove("open");
+  }
+});
+
+function updateUserInfoFromAPI() {
+  // Step 1: Retrieve the access token from the cookie
+  const accessToken = getAccessToken(); // Implement this function to extract the access token from the cookie
+
+  // Step 2: Make the API request
+  fetch("https://ssces-fum.ir/users/profile/", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Step 3: Parse the JSON response
+
+      // Step 4: Update the text of the elements
+      const studentNameElements = document.querySelectorAll(".student-name");
+      const studentIdElements = document.querySelectorAll(".student-id");
+
+      if (studentNameElements) {
+        studentNameElements.forEach((element) => {
+          element.textContent = data.name; // Update student name
+        });
+      }
+
+      if (studentIdElements) {
+        studentIdElements.forEach((element) => {
+          element.textContent = data.student_id; // Update student ID
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}

@@ -151,6 +151,15 @@
                 data-slide="right"
               >
                 <ul id="menu-main-navigation" class="m-menu">
+                  <li class="menu-item hide">
+                    <a href="#" class="user-info" onclick="return false;">
+                      <p class="student-name">نام کاربری</p>
+                      <p class="student-id">شماره دانشجویی</p>
+                    </a>
+                  </li>
+                  <li class="menu-item hide">
+                    <a href="dashboard.html">داشبورد</a>
+                  </li>
                   <li class="menu-item menu-item-home current-menu-item">
                     <a href="index.html" aria-current="page">صفحه اصلی</a>
                   </li>
@@ -169,6 +178,9 @@
                   </li>
                   <li class="menu-item hide">
                     <a href="join-us.html">همکاری با ما</a>
+                  </li>
+                  <li class="menu-item logout-link hide">
+                    <a href="#">خروج</a>
                   </li>
                 </ul>
               </div>
@@ -217,11 +229,28 @@
                     ></a>
                   </div>
                   <div
-                    class="tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
+                    class="login-link tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
                   >
-                    <a href="login.html" class="tourmaster-text login-link login-line"
+                    <a
+                      href="login.html"
+                      class="tourmaster-text login-line"
                       >ورود</a
                     >
+                  </div>
+
+                  <div class="user-dropdown" id="user-dropdown">
+                    <a class="user-dropdown-button" id="user-dropdown-button"
+                      >حساب کاربری <i class="fa fa-user user-icon"></i
+                    ></a>
+                    <div class="user-dropdown-content" id="user-dropdown-content">
+                      <div class="user-info">
+                        <p class="student-name">نام کاربری</p>
+                        <p class="student-id">شماره دانشجویی</p>
+                      </div>
+                      <div class="menu-separator"></div>
+                      <a class="user-menu-item" href="dashboard.html">داشبورد</a>
+                      <a class="user-menu-item logout-link" href="#">خروج</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2377,21 +2406,19 @@
             <div class="ssces-footer-container ssces-container clearfix">
               <div class="ssces-footer-column ssces-item-pdlr ssces-column-20">
                 <div
-                  id="block-24"
                   class="widget widget_block widget_media_image ssces-widget"
                 >
                   <figure class="wp-block-image size-full is-resized">
                     <img
+                    alt="ssces logo"
                       loading="lazy"
                       src="upload/sscesLogo.png"
-                      alt=""
-                      class="wp-image-15871"
                       width="149"
                       height="46"
                     />
                   </figure>
                 </div>
-                <div id="block-8" class="widget widget_block ssces-widget">
+                <div class="widget widget_block ssces-widget">
                   <p>
                     <span
                       class="gdlr-core-social-network-item gdlr-core-item-pdb gdlr-core-none-align gdlr-direction-horizontal"
@@ -2440,6 +2467,24 @@
                       </a>
                     </span>
                   </p>
+                </div>
+                <div
+                  class="widget widget_block widget_media_image ssces-widget"
+                >
+                <img
+                alt="engineering faculty logo"
+                class="logo logo-color"
+                loading="lazy"
+                src="upload/engineering-faculty-logo.svg"
+                style="margin-left: 4px;"
+              />
+
+              <img
+                alt="fum logo"
+                class="logo logo-color"
+                loading="lazy"
+                src="upload/fum-logo.svg"
+              />
                 </div>
               </div>
 
