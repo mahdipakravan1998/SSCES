@@ -156,10 +156,11 @@ table.querySelectorAll("th").forEach((th, columnIndex) => {
 updateTable();
 handlePagination();
 
-
 // JavaScript for search, sort, and pagination in the collaborations table
 const tableCollaborations = document.getElementById("dataTableCollaborations");
-const searchInputCollaborations = document.getElementById("searchInputCollaborations");
+const searchInputCollaborations = document.getElementById(
+  "searchInputCollaborations"
+);
 let currentPageCollaborations = 1;
 const itemsPerPageCollaborations = 5; // Change the desired number of items per page
 let currentSortColumnCollaborations = null;
@@ -168,7 +169,8 @@ let sortAscendingCollaborations = true;
 // Function to update the table based on the current page in the collaborations table
 function updateTableCollaborations() {
   const rows = Array.from(tableCollaborations.querySelectorAll("tbody tr"));
-  const startIndex = (currentPageCollaborations - 1) * itemsPerPageCollaborations;
+  const startIndex =
+    (currentPageCollaborations - 1) * itemsPerPageCollaborations;
   const endIndex = startIndex + itemsPerPageCollaborations;
 
   rows.forEach((row, index) => {
@@ -315,3 +317,47 @@ tableCollaborations.querySelectorAll("th").forEach((th, columnIndex) => {
 // Initial setup
 updateTableCollaborations();
 handlePaginationCollaborations();
+
+// Function to open the modal with response text
+function openModal(responseText) {
+  const modal = document.getElementById("myModal");
+  const responseTextElement = document.getElementById("responseText");
+
+  // Set the response text in the modal
+  responseTextElement.textContent = responseText;
+
+  // Display the modal
+  modal.style.display = "block";
+
+  // Display the modal overlay
+  const modalOverlay = document.getElementById("modalOverlay");
+  modalOverlay.style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+  const modal = document.getElementById("myModal");
+  const modalOverlay = document.getElementById("modalOverlay");
+
+  // Hide the modal and modal overlay
+  modal.style.display = "none";
+  modalOverlay.style.display = "none";
+}
+
+// Event listener to open the modal when clicking on a response text
+tableCollaborations.querySelectorAll("tbody tr").forEach((row) => {
+  const responseTextCell = row.querySelectorAll("td")[1]; // Assuming the "پاسخ من" column is at index 1
+  const responseText = responseTextCell.textContent;
+
+  responseTextCell.addEventListener("click", () => {
+    openModal(responseText);
+  });
+});
+
+// Close modal when clicking outside of it
+window.addEventListener("click", (event) => {
+  const modal = document.getElementById("myModal");
+  if (event.target === modal) {
+    closeModal();
+  }
+});

@@ -693,67 +693,79 @@ p.voluntarily-form-title {
 }
 
 /* Container div with max-width */
-.collaborationsList .table-container, .eventsList .table-container {
+.collaborationsList .table-container,
+.eventsList .table-container {
 	max-width: 100%;
 	margin: 0 auto;
 	overflow-x: auto;
 }
 
-.collaborationsList .search-container, .eventsList .search-container {
+.collaborationsList .search-container,
+.eventsList .search-container {
 	display: flex;
 	margin-bottom: 10px;
 	/* Add some margin for spacing */
 }
 
-.collaborationsList table, .eventsList table {
+.collaborationsList table,
+.eventsList table {
 	border-spacing: 0;
 	border-collapse: separate;
 	width: 100%;
 	table-layout: fixed;
 }
 
-.collaborationsList table tr:last-child td:last-child, .eventsList table tr:last-child td:last-child {
+.collaborationsList table tr:last-child td:last-child,
+.eventsList table tr:last-child td:last-child {
 	border-bottom-left-radius: 8px;
 }
 
-.collaborationsList table tr:last-child td:first-child, .eventsList table tr:last-child td:first-child {
+.collaborationsList table tr:last-child td:first-child,
+.eventsList table tr:last-child td:first-child {
 	border-bottom-right-radius: 8px;
 }
 
 .collaborationsList table tr:first-child th:first-child,
-table tr:first-child, .eventsList table tr:first-child th:first-child,
+table tr:first-child,
+.eventsList table tr:first-child th:first-child,
 table tr:first-child {
 	border-top-right-radius: 8px;
 }
 
 .collaborationsList table tr:first-child th:last-child,
-table tr:first-child, .eventsList table tr:first-child th:last-child,
+table tr:first-child,
+.eventsList table tr:first-child th:last-child,
 table tr:first-child {
 	border-top-left-radius: 8px;
 }
 
 .collaborationsList th,
-td, .eventsList th,
+td,
+.eventsList th,
 td {
 	padding: 0.625em !important;
 	text-align: right;
 	color: #000;
-	overflow: auto;
+	overflow: hidden;
 	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
-.collaborationsList th, .eventsList th {
+.collaborationsList th,
+.eventsList th {
 	cursor: pointer;
 	background-color: #05445e;
 	color: white;
 }
 
 /* Alternating row colors for better readability */
-.collaborationsList tbody tr:nth-child(odd), .eventsList tbody tr:nth-child(odd) {
+.collaborationsList tbody tr:nth-child(odd),
+.eventsList tbody tr:nth-child(odd) {
 	background-color: #f7f7f7;
 }
 
-.collaborationsList tbody tr:nth-child(even), .eventsList tbody tr:nth-child(even) {
+.collaborationsList tbody tr:nth-child(even),
+.eventsList tbody tr:nth-child(even) {
 	background-color: #fdfdfd;
 }
 
@@ -769,40 +781,50 @@ td {
 
 /* Media query for smaller screens */
 @media screen and (max-width: 600px) {
-	.collaborationsList table, .eventsList table {
+
+	.collaborationsList table,
+	.eventsList table {
 		border: none;
 	}
 
-	.collaborationsList table tr:last-child td:last-child, .eventsList table tr:last-child td:last-child {
+	.collaborationsList table tr:last-child td:last-child,
+	.eventsList table tr:last-child td:last-child {
 		border-bottom-left-radius: 0;
 	}
 
-	.collaborationsList table tr:last-child td:first-child, .eventsList table tr:last-child td:first-child {
+	.collaborationsList table tr:last-child td:first-child,
+	.eventsList table tr:last-child td:first-child {
 		border-bottom-right-radius: 0;
 	}
 
 	.collaborationsList table tr:first-child th:first-child,
-	table tr:first-child, .eventsList table tr:first-child th:first-child,
+	table tr:first-child,
+	.eventsList table tr:first-child th:first-child,
 	table tr:first-child {
 		border-top-right-radius: 0;
 	}
 
 	.collaborationsList table tr:first-child th:last-child,
-	table tr:first-child, .eventsList table tr:first-child th:last-child,
+	table tr:first-child,
+	.eventsList table tr:first-child th:last-child,
 	table tr:first-child {
 		border-top-left-radius: 0;
 	}
 
-	.collaborationsList th:nth-child(1), .eventsList th:nth-child(1),
-	.collaborationsList td:nth-child(1), .eventsList td:nth-child(1) {
+	.collaborationsList th:nth-child(1),
+	.eventsList th:nth-child(1),
+	.collaborationsList td:nth-child(1),
+	.eventsList td:nth-child(1) {
 		width: 100%;
 	}
 
-	.collaborationsList table caption, .eventsList table caption {
+	.collaborationsList table caption,
+	.eventsList table caption {
 		font-size: 1.3em;
 	}
 
-	.collaborationsList table thead, .eventsList table thead {
+	.collaborationsList table thead,
+	.eventsList table thead {
 		border: none;
 		clip: rect(0 0 0 0);
 		height: 1px;
@@ -813,14 +835,16 @@ td {
 		width: 1px;
 	}
 
-	.collaborationsList table tr, .eventsList table tr {
+	.collaborationsList table tr,
+	.eventsList table tr {
 		border-bottom: 1px solid #e1e3e1;
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 0.625em;
 	}
 
-	.collaborationsList table td, .eventsList table td {
+	.collaborationsList table td,
+	.eventsList table td {
 		overflow: auto;
 		display: flex;
 		gap: 24px;
@@ -829,7 +853,8 @@ td {
 		justify-content: space-between;
 	}
 
-	.collaborationsList table td::before, .eventsList table td::before {
+	.collaborationsList table td::before,
+	.eventsList table td::before {
 		content: attr(data-label);
 		float: right;
 		/* Place labels on the right for smaller screens */
@@ -837,20 +862,23 @@ td {
 		text-transform: uppercase;
 	}
 
-	.collaborationsList table td, .eventsList table td {
+	.collaborationsList table td,
+	.eventsList table td {
 		border-bottom: 0;
 	}
 }
 
 /* Pagination styles */
-.collaborationsList .pagination, .eventsList .pagination {
+.collaborationsList .pagination,
+.eventsList .pagination {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 20px;
 }
 
-.collaborationsList .pagination a, .eventsList .pagination a {
+.collaborationsList .pagination a,
+.eventsList .pagination a {
 	padding: 8px 16px;
 	text-decoration: none;
 	transition: background-color 0.3s;
@@ -859,16 +887,19 @@ td {
 	/* Add margin for pagination links */
 }
 
-.collaborationsList .pagination a:hover, .eventsList .pagination a:hover {
+.collaborationsList .pagination a:hover,
+.eventsList .pagination a:hover {
 	background-color: #ddd;
 }
 
-.collaborationsList .active, .eventsList .active {
+.collaborationsList .active,
+.eventsList .active {
 	background-color: #007bff;
 	color: #fff;
 }
 
-.collaborationsList #searchInputCollaborations, .eventsList #searchInput {
+.collaborationsList #searchInputCollaborations,
+.eventsList #searchInput {
 	text-align: right;
 	height: 100%;
 	min-height: 32px;
@@ -887,6 +918,97 @@ td {
 
 .eventsList .paid {
 	color: #270;
+}
+
+
+/* Modal Styles */
+.modal-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 1;
+	backdrop-filter: blur(5px);
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	z-index: 99;
+	max-width: 80%;
+	width: 600px;
+	padding: 20px;
+}
+
+.modal-content {
+	z-index: 999;
+	max-height: 400px;
+	text-align: right;
+	border-radius: 8px;
+	background-color: #fefefe;
+	animation-name: modalopen;
+	animation-duration: 0.7s;
+	overflow: auto;
+}
+
+
+@keyframes modalopen {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.close {
+	color: #aaa;
+	float: left;
+	font-size: 28px;
+	font-weight: bold;
+	margin-right: 10px;
+	cursor: pointer;
+	width: 30px;
+	/* Added width to make it square */
+	height: 30px;
+	/* Added height to make it square */
+	text-align: center;
+	/* Center text vertically and horizontally */
+	line-height: 30px;
+	/* Center text vertically */
+}
+
+.close:hover,
+.close:focus {
+	background-color: red;
+	/* Change background color to red */
+	border-radius: 50%;
+	/* Make it a circle */
+	animation-name: modalclose;
+	animation-duration: 0.3s;
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+@keyframes modalclose {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }
 
 
