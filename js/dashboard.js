@@ -361,3 +361,39 @@ window.addEventListener("click", (event) => {
     closeModal();
   }
 });
+
+
+function getAccessToken() {
+    const cookies = document.cookie.split("; ");
+    for (const cookie of cookies) {
+      const [name, value] = cookie.split("=");
+      if (name === "access_token") {
+        return value;
+      }
+    }
+    return null;
+  }
+
+// 1. Get the access token from the cookie
+const accessToken = getAccessToken();
+
+if (!accessToken) {
+    console.error('Access token not found in cookies.');
+} else {
+    // 2. Make an HTTP GET request to the API
+    fetch('https://ssces-fum.ir/users/profile/', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // 3. Update the HTML elements with the retrieved data
+        document.getElementById('username').textContent = data.username;
+        document.getElementById('name').textContent = data.name;
+        document.getElementById('phone_number').textContent = data.phone_number;
+        document.getElementById('student_id').textContent = data.student_id;
+    })
+    .catch(error => console.error('Error fetching data from the API:', error));
+}
