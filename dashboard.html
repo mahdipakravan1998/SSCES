@@ -95,7 +95,7 @@
     <link
       rel="stylesheet"
       id="gdlr-core-google-font-css"
-      href="https://fonts.googleapis.com/css?family=Jost%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2Citalic%2C500italic%2C600italic%2C700italic%2C800italic%2C900italic%7CAmiri%3Aregular%2Citalic%2C700%2C700italic%7CAllison%3Aregular&amp;subset=cyrillic%2Clatin%2Clatin-ext%2Carabic%2Cvietnamese&amp;ver=6.0.1"
+      href="fonts/googleapis.css"
       type="text/css"
       media="all"
     />
@@ -391,10 +391,10 @@
                           اطلاعات شخصی
                         </div>
                         <div class="gdlr-core-tab-item-title" data-tab-id="2">
-                          رویدادها
+                          رویدادهای من
                         </div>
                         <div class="gdlr-core-tab-item-title" data-tab-id="3">
-                          همکاری با ما
+                          پاسخ‌های من به فرم‌ها
                         </div>
                         <div
                           class="gdlr-core-tab-item-title-line gdlr-core-skin-divider"
@@ -409,87 +409,102 @@
                           data-tab-id="1"
                           style="color: #6b6b6b"
                         >
-                        <div class="info-table-container">
-                          <div class="info-table">
-                            <div class="info-table-row">
-                              <div class="info-table-header">نام کاربری</div>
-                              <div class="info-table-cell">mahdi</div>
-                            </div>
-                            <div class="info-table-row">
-                              <div class="info-table-header">نام و نام خانوادگی</div>
-                              <div class="info-table-cell">مهدی پاکروان</div>
-                            </div>
-                            <div class="info-table-row">
-                              <div class="info-table-header">شماره همراه</div>
-                              <div class="info-table-cell">09981089917</div>
-                            </div>
-                            <div class="info-table-row">
-                              <div class="info-table-header">شماره دانشجویی</div>
-                              <div class="info-table-cell">9622762306</div>
+                          <div class="info-table-container">
+                            <div class="info-table">
+                              <div class="info-table-row">
+                                <div class="info-table-header">نام کاربری</div>
+                                <div class="info-table-cell">mahdi</div>
+                              </div>
+                              <div class="info-table-row">
+                                <div class="info-table-header">
+                                  نام و نام خانوادگی
+                                </div>
+                                <div class="info-table-cell">مهدی پاکروان</div>
+                              </div>
+                              <div class="info-table-row">
+                                <div class="info-table-header">شماره همراه</div>
+                                <div class="info-table-cell">09981089917</div>
+                              </div>
+                              <div class="info-table-row">
+                                <div class="info-table-header">
+                                  شماره دانشجویی
+                                </div>
+                                <div class="info-table-cell">9622762306</div>
+                              </div>
                             </div>
                           </div>
-                        </div>
                         </div>
                         <div
                           class="gdlr-core-tab-item-content"
                           data-tab-id="2"
                           style="color: #6b6b6b"
                         >
-                          <div
-                            class="voluntarily-form wpcf7"
-                            style="max-width: 760px; margin: auto"
-                          >
-                            <form method="post" action="">
-                              <p class="voluntarily-form-title">
-                                با سلام و احترام،
-                                <br />
-                                با خرسندی اعلام می‌داریم که در انجمن کامپیوتر
-                                دانشگاه فردوسی مشهد امکان پذیرش درخواست‌های
-                                تدریس وجود دارد. با تشکر از علاقه‌مندی شما، جهت
-                                ثبت درخواست تدریس، لطفا از فرم درخواست تدریس
-                                استفاده نمایید.
-                              </p>
-
-                              <div class="voluntarily-form-group-input">
-                                <input
-                                  type="tel"
-                                  name="PhoneNumber2"
-                                  id="PhoneNumber2"
-                                  placeholder="تلفن همراه:"
-                                  class="input PhoneNumber voluntarily-form-input-item"
-                                />
-                                <input
-                                  type="text"
-                                  name="Email2"
-                                  id="Email2"
-                                  placeholder="ایمیل:"
-                                  class="input voluntarily-form-input-item"
-                                />
-                              </div>
-
-                              <p>
-                                لطفا توضیح دهید که در چه موضوعاتی تدریس کرده‌اید
-                                یا چه مهارت‌هایی را دارید که می‌توانید به اشتراک
-                                بگذارید، همچنین هر اطلاعات دیگری که ممکن است با
-                                درخواست تدریس شما مرتبط باشد را نیز وارد کنید.
-                                با ارائه این اطلاعات، ما می‌توانیم بهترین تصمیم
-                                را در رابطه با درخواست شما بگیریم.
-                              </p>
-
-                              <textarea
-                                name="Message2"
-                                id="Message2"
-                                placeholder="لطفا موضوع درخواست تدریس و جزئیات مربوط به آن را وارد کنید"
-                                class="input"
-                              ></textarea>
-
+                          <div class="eventsList">
+                            <div class="search-container">
                               <input
-                                type="submit"
-                                name="submit2"
-                                value="ثبت"
-                                class="submit-button"
+                                type="text"
+                                id="searchInput"
+                                placeholder="جستجو"
                               />
-                            </form>
+                            </div>
+
+                            <!-- Container div for the table -->
+                            <div class="table-container">
+                              <table id="dataTable">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">عنوان رویداد</th>
+                                    <th scope="col">تاریخ برگزاری</th>
+                                    <th scope="col">وضعیت پرداخت</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <!-- Sample rows with course list, date, and payment status -->
+                                  <tr>
+                                    <td data-label="عنوان رویداد">
+                                      دورهمی صمیمانه دانشجویان و اساتید گروه
+                                      کامپیوتر
+                                    </td>
+                                    <td data-label="تاریخ برگزاری">
+                                      ۰۵ دی ۱۴۰۰
+                                    </td>
+                                    <td data-label="وضعیت پرداخت">
+                                      پرداخت نشده
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td data-label="عنوان رویداد">
+                                      دوره مقدماتی برنامه‌نویسی IOS
+                                    </td>
+                                    <td data-label="تاریخ برگزاری">
+                                      ۰۶ شهریور ۱۴۰۱
+                                    </td>
+                                    <td data-label="وضعیت پرداخت" class="paid">
+                                      پرداخت شده
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td data-label="عنوان رویداد">
+                                      ضیافت افطاری انجمن علمی مهندسی کامپیوتر
+                                    </td>
+                                    <td data-label="تاریخ برگزاری">
+                                      ۰۶ اردیبهشت ۱۴۰۱
+                                    </td>
+                                    <td data-label="وضعیت پرداخت">
+                                      پرداخت نشده
+                                    </td>
+                                  </tr>
+                                  <!-- Add more rows here -->
+                                </tbody>
+                              </table>
+                            </div>
+
+                            <div id="pagination" class="gdlr-core-pagination gdlr-core-style-circle gdlr-core-center-align gdlr-core-item-pdlr">
+                              <a class="prev page-numbers" href="javascript:void(0);"></a>
+                              <span class="page-numbers current" aria-current="page">1</span>
+                              <a class="next page-numbers" href="javascript:void(0);"></a>
+                            </div>
+                            
                           </div>
                         </div>
                         <div
@@ -497,62 +512,50 @@
                           data-tab-id="3"
                           style="color: #6b6b6b"
                         >
-                          <div
-                            class="voluntarily-form wpcf7"
-                            style="max-width: 760px; margin: auto"
-                          >
-                            <form method="post" action="">
-                              <p class="voluntarily-form-title">
-                                با سلام و احترام،
-                                <br />
-                                از همه دانشجویان عزیز دعوت می‌کنیم که نظرات،
-                                انتقادات، و پیشنهادات خود را در رابطه با
-                                فعالیت‌ها و خدمات ارائه شده توسط انجمن، با ما در
-                                میان بگذارند. با توجه به این نظرات، ما می‌توانیم
-                                بهبودی هر چه بیشتری را در ارائه خدمات به
-                                دانشجویان داشته باشیم. با تشکر از حضور و همکاری
-                                شما.
-                              </p>
-
-                              <div class="voluntarily-form-group-input">
-                                <input
-                                  type="tel"
-                                  name="PhoneNumber3"
-                                  id="PhoneNumber3"
-                                  placeholder="تلفن همراه:"
-                                  class="input PhoneNumber voluntarily-form-input-item"
-                                />
-                                <input
-                                  type="text"
-                                  name="Email3"
-                                  id="Email3"
-                                  placeholder="ایمیل:"
-                                  class="input voluntarily-form-input-item"
-                                />
-                              </div>
-
-                              <p>
-                                شما می‌توانید هرگونه پیشنهاد، انتقاد، شکایت یا
-                                اظهار نظری که در خصوص عملکرد انجمن، کیفیت خدمات،
-                                برنامه‌ها و فعالیت‌های انجمن و یا هر موضوع دیگری
-                                مرتبط با انجمن باشد، ارائه دهید.
-                              </p>
-
-                              <textarea
-                                name="Message3"
-                                id="Message3"
-                                placeholder="نظرات و پیشنهادات خود را در اینجا وارد کنید"
-                                class="input"
-                              ></textarea>
-
-                              <input
-                                type="submit"
-                                name="submit3"
-                                value="ثبت"
-                                class="submit-button"
-                              />
-                            </form>
+                        <div class="collaborationsList">
+                          <div class="search-container">
+                            <input type="text" id="searchInputCollaborations" placeholder="جستجو" />
                           </div>
+                    
+                          <!-- Container div for the table -->
+                          <div class="table-container">
+                            <table id="dataTableCollaborations">
+                              <thead>
+                                <tr>
+                                  <th scope="col">عنوان همکاری</th>
+                                  <th scope="col">پاسخ من</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <!-- Sample rows with collaboration titles and responses -->
+                                <tr>
+                                  <td data-label="عنوان همکاری">
+                                    همکاری در پروژه توسعه وب‌سایت
+                                  </td>
+                                  <td data-label="پاسخ من">پذیرفته شده</td>
+                                </tr>
+                                <tr>
+                                  <td data-label="عنوان همکاری">مشاوره در امور مالی</td>
+                                  <td data-label="پاسخ من">در انتظار تایید</td>
+                                </tr>
+                                <tr>
+                                  <td data-label="عنوان همکاری">همکاری در تحقیق علمی</td>
+                                  <td data-label="پاسخ من">رد شده</td>
+                                </tr>
+                                <!-- Add more rows here -->
+                              </tbody>
+                            </table>
+                          </div>
+                    
+                          <div
+                            id="paginationCollaborations"
+                            class="gdlr-core-pagination gdlr-core-style-circle gdlr-core-center-align gdlr-core-item-pdlr"
+                          >
+                            <a class="prev page-numbers" href="javascript:void(0);"></a>
+                            <span class="page-numbers current" aria-current="page">1</span>
+                            <a class="next page-numbers" href="javascript:void(0);"></a>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -762,6 +765,9 @@
     </div>
 
     <script src="/js/preLoader.js"></script>
+
+    <script src="/js/dashboard.js"></script>
+
     <script
       type="text/javascript"
       src="js/jquery.minaf6c.js?ver=3.6.0"

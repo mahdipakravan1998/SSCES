@@ -692,6 +692,205 @@ p.voluntarily-form-title {
 	color: #1f1f1f;
 }
 
+/* Container div with max-width */
+.collaborationsList .table-container, .eventsList .table-container {
+	max-width: 100%;
+	margin: 0 auto;
+	overflow-x: auto;
+}
+
+.collaborationsList .search-container, .eventsList .search-container {
+	display: flex;
+	margin-bottom: 10px;
+	/* Add some margin for spacing */
+}
+
+.collaborationsList table, .eventsList table {
+	border-spacing: 0;
+	border-collapse: separate;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.collaborationsList table tr:last-child td:last-child, .eventsList table tr:last-child td:last-child {
+	border-bottom-left-radius: 8px;
+}
+
+.collaborationsList table tr:last-child td:first-child, .eventsList table tr:last-child td:first-child {
+	border-bottom-right-radius: 8px;
+}
+
+.collaborationsList table tr:first-child th:first-child,
+table tr:first-child, .eventsList table tr:first-child th:first-child,
+table tr:first-child {
+	border-top-right-radius: 8px;
+}
+
+.collaborationsList table tr:first-child th:last-child,
+table tr:first-child, .eventsList table tr:first-child th:last-child,
+table tr:first-child {
+	border-top-left-radius: 8px;
+}
+
+.collaborationsList th,
+td, .eventsList th,
+td {
+	padding: 0.625em !important;
+	text-align: right;
+	color: #000;
+	overflow: auto;
+	white-space: nowrap;
+}
+
+.collaborationsList th, .eventsList th {
+	cursor: pointer;
+	background-color: #05445e;
+	color: white;
+}
+
+/* Alternating row colors for better readability */
+.collaborationsList tbody tr:nth-child(odd), .eventsList tbody tr:nth-child(odd) {
+	background-color: #f7f7f7;
+}
+
+.collaborationsList tbody tr:nth-child(even), .eventsList tbody tr:nth-child(even) {
+	background-color: #fdfdfd;
+}
+
+.eventsList th:nth-child(1),
+.eventsList td:nth-child(1) {
+	width: 60%;
+}
+
+.collaborationsList th:nth-child(1),
+.collaborationsList td:nth-child(1) {
+	width: 33%;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+	.collaborationsList table, .eventsList table {
+		border: none;
+	}
+
+	.collaborationsList table tr:last-child td:last-child, .eventsList table tr:last-child td:last-child {
+		border-bottom-left-radius: 0;
+	}
+
+	.collaborationsList table tr:last-child td:first-child, .eventsList table tr:last-child td:first-child {
+		border-bottom-right-radius: 0;
+	}
+
+	.collaborationsList table tr:first-child th:first-child,
+	table tr:first-child, .eventsList table tr:first-child th:first-child,
+	table tr:first-child {
+		border-top-right-radius: 0;
+	}
+
+	.collaborationsList table tr:first-child th:last-child,
+	table tr:first-child, .eventsList table tr:first-child th:last-child,
+	table tr:first-child {
+		border-top-left-radius: 0;
+	}
+
+	.collaborationsList th:nth-child(1), .eventsList th:nth-child(1),
+	.collaborationsList td:nth-child(1), .eventsList td:nth-child(1) {
+		width: 100%;
+	}
+
+	.collaborationsList table caption, .eventsList table caption {
+		font-size: 1.3em;
+	}
+
+	.collaborationsList table thead, .eventsList table thead {
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	.collaborationsList table tr, .eventsList table tr {
+		border-bottom: 1px solid #e1e3e1;
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 0.625em;
+	}
+
+	.collaborationsList table td, .eventsList table td {
+		overflow: auto;
+		display: flex;
+		gap: 24px;
+		text-align: left;
+		border: 1px solid #e1e3e1;
+		justify-content: space-between;
+	}
+
+	.collaborationsList table td::before, .eventsList table td::before {
+		content: attr(data-label);
+		float: right;
+		/* Place labels on the right for smaller screens */
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.collaborationsList table td, .eventsList table td {
+		border-bottom: 0;
+	}
+}
+
+/* Pagination styles */
+.collaborationsList .pagination, .eventsList .pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.collaborationsList .pagination a, .eventsList .pagination a {
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color 0.3s;
+	color: #333;
+	margin: 0 4px;
+	/* Add margin for pagination links */
+}
+
+.collaborationsList .pagination a:hover, .eventsList .pagination a:hover {
+	background-color: #ddd;
+}
+
+.collaborationsList .active, .eventsList .active {
+	background-color: #007bff;
+	color: #fff;
+}
+
+.collaborationsList #searchInputCollaborations, .eventsList #searchInput {
+	text-align: right;
+	height: 100%;
+	min-height: 32px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	color: #0c0c0c;
+	border-color: #0c0c0c;
+	border-width: 2px;
+	border-style: solid;
+	padding: 5px 35px;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.eventsList .paid {
+	color: #270;
+}
+
+
+
 @media (max-width: 767px) {
 	.info-table-container {
 		margin-right: 0;
