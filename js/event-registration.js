@@ -94,3 +94,23 @@ function persianDateConverter(gregorianDate) {
 
 // Call the function to populate the page content
 populateEventPage();
+
+// Get the elements by their IDs
+const registerButton = document.getElementById("register-button");
+const phoneInput = document.getElementById("phone-input");
+const paymentButton = document.getElementById("payment-button");
+
+// Add a click event listener to the "ثبت نام" button
+registerButton.addEventListener("click", function () {
+  
+    // Show the elements with a fade-in animation
+    phoneInput.style.display = "block";
+    paymentButton.style.display = "block";
+    setTimeout(() => {
+      phoneInput.style.opacity = "1";
+      paymentButton.style.opacity = "1";
+    }, 0); // Use a small delay to trigger the transition
+
+  // Hide the "ثبت نام" button
+  registerButton.style.display = "none";
+});

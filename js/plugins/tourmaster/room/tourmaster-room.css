@@ -481,13 +481,13 @@
     margin-right: 0px;
 }
 
-.tourmaster-room-booking-bar-content>div {
+/* .tourmaster-room-booking-bar-content>div {
     display: none;
 }
 
 .tourmaster-room-booking-bar-content>div:first-child {
     display: block;
-}
+} */
 
 .tourmaster-room-booking-guest-selection.tourmaster-one .tourmaster-head>span {
     display: none;

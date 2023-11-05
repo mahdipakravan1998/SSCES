@@ -231,9 +231,7 @@
                   <div
                     class="login-link tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
                   >
-                    <a
-                      href="login.html"
-                      class="tourmaster-text login-line"
+                    <a href="login.html" class="tourmaster-text login-line"
                       >ورود</a
                     >
                   </div>
@@ -242,13 +240,18 @@
                     <a class="user-dropdown-button" id="user-dropdown-button"
                       >حساب کاربری <i class="fa fa-user user-icon"></i
                     ></a>
-                    <div class="user-dropdown-content" id="user-dropdown-content">
+                    <div
+                      class="user-dropdown-content"
+                      id="user-dropdown-content"
+                    >
                       <div class="user-info">
                         <p class="student-name">نام کاربری</p>
                         <p class="student-id">شماره دانشجویی</p>
                       </div>
                       <div class="menu-separator"></div>
-                      <a class="user-menu-item" href="dashboard.html">داشبورد</a>
+                      <a class="user-menu-item" href="dashboard.html"
+                        >داشبورد</a
+                      >
                       <a class="user-menu-item logout-link" href="#">خروج</a>
                     </div>
                   </div>
@@ -376,7 +379,6 @@
           <div class="gdlr-core-page-builder-body">
             <div
               class="gdlr-core-pbf-sidebar-wrapper gdlr-core-sticky-sidebar gdlr-core-js"
-              id="gdlr-core-sidebar-wrapper-1"
             >
               <div
                 class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container"
@@ -386,112 +388,31 @@
                 >
                   <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                     <div class="tourmaster-room-booking-bar-wrap">
-                      <div class="tourmaster-room-booking-bar-content">
-                        <div
+                      <div
                           class="tourmaster-room-booking-wrap"
                           class="tourmaster-active"
-                          data-room-tab="booking"
                         >
                           <div
-                            class="tourmaster-room-booking-form clearfix"
-                            id="tourmaster-room-booking-form"
+                            class="clearfix"
                           >
                             <img
                               class="single-post-image"
                               src="upload/post_ios.jpg"
                             />
-                            <input
-                              type="submit"
-                              class="tourmaster-room-button tourmaster-full"
-                              value="ثبت نام"
-                            />
+                            <button id="register-button" class="reg-btn">
+                              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
+                            </button>
                           </div>
                         </div>
-                        <div
-                          class="tourmaster-room-enquiry-wrap"
-                          data-room-tab="enquiry"
-                        >
-                          <form
-                            class="tourmaster-enquiry-form tourmaster-form-field tourmaster-room clearfix"
-                            id="tourmaster-enquiry-form"
-                            data-action="tourmaster_room_send_enquiry_form"
-                            data-validate-error="Please fill all required fields."
-                          >
-                            <div
-                              class="tourmaster-enquiry-field tourmaster-enquiry-field-full-name tourmaster-type-text clearfix"
-                            >
-                              <div class="tourmaster-head">
-                                Full Name<span class="tourmaster-req">*</span>
-                              </div>
-                              <div class="tourmaster-tail clearfix">
-                                <input
-                                  type="text"
-                                  name="full-name"
-                                  value=""
-                                  data-required
-                                />
-                              </div>
-                            </div>
-                            <div
-                              class="tourmaster-enquiry-field tourmaster-enquiry-field-email-address tourmaster-type-text clearfix"
-                            >
-                              <div class="tourmaster-head">
-                                Email Address<span class="tourmaster-req"
-                                  >*</span
-                                >
-                              </div>
-                              <div class="tourmaster-tail clearfix">
-                                <input
-                                  type="text"
-                                  name="email-address"
-                                  value=""
-                                  data-required
-                                />
-                              </div>
-                            </div>
-                            <div
-                              class="tourmaster-enquiry-field tourmaster-enquiry-field-your-enquiry tourmaster-type-textarea clearfix"
-                            >
-                              <div class="tourmaster-head">
-                                Your Enquiry<span class="tourmaster-req"
-                                  >*</span
-                                >
-                              </div>
-                              <div class="tourmaster-tail clearfix">
-                                <textarea
-                                  name="your-enquiry"
-                                  data-required
-                                ></textarea>
-                              </div>
-                            </div>
-                            <div class="tourmaster-enquiry-term">
-                              <input
-                                type="checkbox"
-                                name="tourmaster-require-acceptance"
-                              />* I agree with
-                              <a href="#" target="_blank">Terms of Service</a>
-                              and
-                              <a href="#" target="_blank">Privacy Statement</a>.
-                              <div
-                                class="tourmaster-enquiry-term-message tourmaster-enquiry-form-message tourmaster-failed"
-                              >
-                                Please agree to all the terms and conditions
-                                before proceeding to the next step
-                              </div>
-                            </div>
-                            <div class="tourmaster-enquiry-form-message"></div>
-                            <input
-                              type="hidden"
-                              name="room-id"
-                              value="15031"
-                            /><input
-                              type="submit"
-                              class="tourmaster-room-button tourmaster-full"
-                              value="Submit Enquiry"
-                            />
-                          </form>
-                        </div>
-                      </div>
+                        <input
+                          type="tel"
+                          class="registration-phone"
+                          id="phone-input"
+                          placeholder="تلفن همراه:"
+                        />
+                        <button id="payment-button" class="reg-btn">
+                          ثبت نام
+                        </button>
                     </div>
                   </div>
                 </div>
@@ -787,7 +708,7 @@
                 >
                   <figure class="wp-block-image size-full is-resized">
                     <img
-                    alt="ssces logo"
+                      alt="ssces logo"
                       loading="lazy"
                       src="upload/sscesLogo.png"
                       width="149"
@@ -848,20 +769,20 @@
                 <div
                   class="widget widget_block widget_media_image ssces-widget"
                 >
-                <img
-                alt="engineering faculty logo"
-                class="logo logo-color"
-                loading="lazy"
-                src="upload/engineering-faculty-logo.svg"
-                style="margin-left: 16px;"
-              />
+                  <img
+                    alt="engineering faculty logo"
+                    class="logo logo-color"
+                    loading="lazy"
+                    src="upload/engineering-faculty-logo.svg"
+                    style="margin-left: 16px"
+                  />
 
-              <img
-                alt="fum logo"
-                class="logo logo-color"
-                loading="lazy"
-                src="upload/fum-logo.svg"
-              />
+                  <img
+                    alt="fum logo"
+                    class="logo logo-color"
+                    loading="lazy"
+                    src="upload/fum-logo.svg"
+                  />
                 </div>
               </div>
 

@@ -304,12 +304,18 @@ input:checked+.library-slider:before {
 	margin: 0;
 }
 
-
 .voluntarily-form input[type=tel],
 .voluntarily-form input[type=text],
 textarea {
+	direction: rtl;
 	background-color: rgb(242, 242, 242) !important;
 	border-radius: 8px;
+}
+
+.voluntarily-form input[type=tel]::placeholder,
+.voluntarily-form input[type=text]::placeholder,
+textarea::placeholder {
+	font-size: 0.8rem;
 }
 
 .voluntarily-form-group-input {
@@ -756,6 +762,18 @@ td {
 	cursor: pointer;
 	background-color: #05445e;
 	color: white;
+	/* Transition for a smooth color change effect */
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.collaborationsList th:hover:not(.no-hover),
+.eventsList th:hover:not(.no-hover) {
+	background-color: rgb(24, 154, 180);
+}
+
+.no-hover:hover {
+	cursor: auto;
+	/* Use a different cursor style, like "not-allowed" */
 }
 
 /* Alternating row colors for better readability */
@@ -918,6 +936,19 @@ td {
 
 .eventsList .paid {
 	color: #270;
+	font-weight: bold;
+}
+
+.my-response-modal {
+	cursor: pointer;
+	/* Transition for a smooth color change effect */
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.my-response-modal:hover {
+	color: #fff;
+	background-color: rgb(24, 154, 180);
+	/* New background color on hover */
 }
 
 
@@ -1011,7 +1042,55 @@ td {
 	}
 }
 
+/* Initially hidden state */
+#phone-input,
+#payment-button {
+	display: none;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
 
+.registration-phone {
+	direction: rtl;
+	background-color: rgb(242, 242, 242) !important;
+	border-radius: 8px;
+	font-size: 15px;
+	padding: 15px 22px;
+	display: block;
+	width: 100%;
+	border: none;
+	margin-bottom: 0.5em;
+}
+
+.reg-btn {
+	width: 100%;
+	border-color: #0c0c0c !important;
+	background-color: transparent;
+	border-width: 2px;
+	border-style: solid;
+	padding: 12px 0 12px 0;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	cursor: pointer;
+	transition: background 300ms, color 300ms, border-color 300ms;
+	-moz-transition: background 300ms, color 300ms, border-color 300ms;
+	-o-transition: background 300ms, color 300ms, border-color 300ms;
+	-webkit-transition: background 300ms, color 300ms, border-color 300ms;
+}
+
+#payment-button.reg-btn {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 16px;
+}
+
+.reg-btn:hover {
+	color: #fff;
+	background-color: #0c0c0c;
+}
 
 @media (max-width: 767px) {
 	.info-table-container {
@@ -9789,7 +9868,7 @@ span.paypal-button-text.true {
 
 .input {
 	width: 100% !important;
-	border: 1px solid #d8d8d8 !important;
+	border: none !important;
 	margin-bottom: 20px !important;
 }
 
