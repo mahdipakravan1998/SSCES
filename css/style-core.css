@@ -382,7 +382,7 @@ p.voluntarily-form-title {
 
 .error-icon {
 	margin-bottom: 20px;
-	color: red;
+	color: #D8000C;
 	margin-left: 20px;
 }
 
@@ -392,10 +392,11 @@ p.voluntarily-form-title {
 }
 
 .error-text {
-	color: red;
+	color: #D8000C;
 }
 
 .toast {
+	z-index: 9999;
 	text-align: right;
 	position: fixed;
 	bottom: 25px;
@@ -498,9 +499,11 @@ p.voluntarily-form-title {
 }
 
 .success-msg {
+	font-size: 15px;
+	direction: rtl;
 	display: flex;
 	align-items: center;
-	padding: 16px;
+	padding: 8px;
 	background-color: #DFF2BF;
 	color: #270;
 	border-radius: 5px;
@@ -508,7 +511,7 @@ p.voluntarily-form-title {
 
 .success-msg-text {
 	margin-bottom: 0px !important;
-	margin-right: 16px
+	margin-right: 0.5rem;
 }
 
 #preloader {
@@ -1090,6 +1093,28 @@ td {
 .reg-btn:hover {
 	color: #fff;
 	background-color: #0c0c0c;
+}
+
+.registration-error {
+	display: flex;
+	direction: rtl;
+	text-align: right;
+	align-items: center;
+	font-size: small;
+	padding: 8px;
+	background-color: #FFBABA;
+	color: #D8000C;
+	border-radius: 5px;
+	margin-bottom: 0.5rem;
+}
+
+.registration-error-icon {
+	margin-left: 0.5rem;
+	color: #D8000C;
+}
+
+.registration-error-text {
+	margin-bottom: 0 !important;
 }
 
 @media (max-width: 767px) {

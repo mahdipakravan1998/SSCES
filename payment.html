@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+
+    <link rel="icon" type="image/x-icon" href="/payment/images/ap.png" />
+
+    <title>آسان پرداخت پرشین (آپ)</title>
+
+    <link rel="stylesheet" href="./payment/payment.css" />
+  </head>
+  <main role="main" class="pb-3">
+    <div class="container main-wrapper">
+      <div class="header-container">
+        <div class="clearfix header">
+          <div class="col-xs-2 no-padding">
+            <img src="./payment/images/shaparak.png" class="img-responsive" />
+          </div>
+          <div class="col-xs-8">
+            <h3 class="text-center d-none title">
+              درگاه پرداخت اینترنتی آسان پرداخت
+            </h3>
+          </div>
+          <div class="col-xs-2 no-padding">
+            <img
+              src="./payment/images/ap.png"
+              class="img-responsive pull-left"
+              style="width: 70%"
+            />
+          </div>
+        </div>
+      </div>
+      <div id="main-page" class="container no-padding">
+        <div class="col-md-5 col-md-push-7 invoice-info">
+          <div class="wrapper clearfix invoice-wrapper">
+            <div class="invoice-header">
+              <h5 id="tran-info-title" class="text-center no-margin">
+                <i class=""></i> اطلاعات خرید
+              </h5>
+            </div>
+            <div class="invoice-body clearfix">
+              <div class="clearfix">
+                <div class="col-xs-4 col-sm-12 invoice-title">مبلغ تراکنش</div>
+                <div class="col-xs-8 col-sm-12 invoice-value tran-amount">
+                  <span id="tran-amount">۵۰۰,۰۰۰</span> <span>ریال</span>
+                </div>
+              </div>
+              <div class="row">
+                <div
+                  class="clearfix merchant-logo-place text-center"
+                  style="display: none"
+                >
+                  <div
+                    class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5 col-md-4 col-md-offset-4"
+                  >
+                    <img
+                      src="https://asan.shaparak.ir/newipg/"
+                      id="merchant_logo"
+                      class="img-responsive"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix pardakhtYarInfo" style="display: none">
+                <div class="col-xs-4 col-sm-12 invoice-title">پرداخت یار</div>
+                <div
+                  id="tran-pardakhtyar-name"
+                  class="col-xs-8 col-sm-12 invoice-value"
+                ></div>
+              </div>
+              <div class="clearfix">
+                <div class="col-xs-4 col-sm-12 invoice-title">نام پذیرنده</div>
+                <div
+                  id="tran-merchant-name"
+                  class="col-xs-8 col-sm-12 invoice-value"
+                >
+                  انجمن علمی مهندسی کامپیوتر دانشگاه فردوسی مشهد
+                </div>
+              </div>
+              <div class="clearfix">
+                <div
+                  class="col-xs-4 col-sm-12 invoice-title small-font-size pardakhtYarInfo"
+                  style="display: none"
+                >
+                  کد پذیرنده/ترمینال پشتیبانی شده
+                </div>
+                <div class="col-xs-4 col-sm-12 invoice-title ordinary">
+                  پذیرنده/ترمینال
+                </div>
+                <div
+                  id="tran-merchant-code"
+                  class="col-xs-8 col-sm-12 invoice-value"
+                >
+                  ۴۴۴۷۵۳۲/۴۸۲۸۲۳۸
+                </div>
+              </div>
+              <div class="clearfix">
+                <div class="col-xs-4 col-sm-12 invoice-title">سایت پذیرنده</div>
+                <div
+                  id="tran-merchant-site"
+                  class="col-xs-8 col-sm-12 invoice-value"
+                >
+                  http://ssces.ir
+                </div>
+              </div>
+              <div class="clearfix bill" style="display: none">
+                <div class="col-xs-4 col-sm-12 invoice-title">شناسه قبض</div>
+                <div
+                  id="tran-bill-id"
+                  class="col-xs-8 col-sm-12 invoice-value"
+                ></div>
+              </div>
+              <div class="clearfix bill" style="display: none">
+                <div class="col-xs-4 col-sm-12 invoice-title">شناسه پرداخت</div>
+                <div
+                  id="tran-pay-id"
+                  class="col-xs-8 col-sm-12 invoice-value"
+                ></div>
+              </div>
+              <div class="clearfix bill" style="display: none">
+                <div class="col-xs-4 col-sm-12 invoice-title">نوع قبض</div>
+                <div
+                  id="tran-bill-organization"
+                  class="col-xs-8 col-sm-12 invoice-value"
+                ></div>
+              </div>
+              <div class="col-xs-12 text-center gray-bg time-title">
+                <h6 class="no-margin">
+                  زمان باقی مانده : <span class="timer">۹:۴۵</span>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 col-md-pull-5 card-info">
+          <div class="wrapper clearfix">
+            <form
+              action="https://asan.shaparak.ir/"
+              method="post"
+              id="payForm"
+              autocomplete="off"
+              novalidate=""
+            >
+              <input
+                name="AntiforgeryField"
+                type="hidden"
+                value="CfDJ8Mc-S9a0J5ZPgp3Q2hfVUxpHgaXnhhb06KYDgtTY60orzWRU_TuFRC2VeYO2AhiQSvdpN92LetwTfSZXO3EA3Nuy-hd2exHlC7ESwdlqQizw9AkUBJ_EB1IHXVajKcLpNFrmuBuyLQU16JeMePzKvl0"
+              />
+              <div class="invoice-header col-xs-12">
+                <h5 class="text-center no-margin">
+                  <i class=""></i> اطلاعات کارت
+                  <span class="bincode text-alert"></span>
+                </h5>
+              </div>
+              <div class="col-xs-12 content">
+                <div
+                  id="pan-wrapper-element"
+                  class="text-center col-xs-12 form-group"
+                >
+                  <div class="card-number-title col-sm-3 sm-title col-md-2">
+                    شماره کارت
+                  </div>
+                  <div
+                    class="card-id-container col-xs-12 col-sm-9 col-md-10 focus-wrapper"
+                  >
+                    <ul class="cards-wrapper"></ul>
+                    <div class="col-xs-3 pan1">
+                      <input
+                        id="pan1-4"
+                        name="pan1-4"
+                        type="tel"
+                        class="form-control pan4 dont-close-cards"
+                        pattern="(\d{4})|(\s{4})"
+                        maxlength="4"
+                        autocomplete="off"
+                        required=""
+                        card-grp="1"
+                      />
+                    </div>
+                    <div class="col-xs-3">
+                      <input
+                        id="pan2-4"
+                        name="pan2-4"
+                        type="tel"
+                        class="form-control pan4 dont-close-cards"
+                        pattern="(\d{4})|(\d{2}\*{2})|(آپ  )"
+                        autocomplete="off"
+                        maxlength="4"
+                        required=""
+                        card-grp="2"
+                      />
+                    </div>
+                    <div class="col-xs-3">
+                      <input
+                        id="pan3-4"
+                        name="pan3-4"
+                        type="tel"
+                        class="form-control pan4 dont-close-cards"
+                        pattern="(\d{4})|(\*{4})|(پول )"
+                        maxlength="4"
+                        autocomplete="off"
+                        required=""
+                        card-grp="3"
+                      />
+                    </div>
+                    <div class="col-xs-3">
+                      <input
+                        id="pan4-4"
+                        name="pan4-4"
+                        type="tel"
+                        class="form-control pan4 dont-close-cards"
+                        pattern="(\d{4})|(کیف )"
+                        maxlength="4"
+                        autocomplete="off"
+                        required=""
+                        card-grp="4"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  id="cvv2-wrapper"
+                  class="text-center col-xs-8 col-xs-offset-2 col-sm-12 form-group xs-padding"
+                >
+                  <div class="col-sm-3 sm-title col-md-2">CVV2</div>
+                  <div class="col-sm-9 col-md-10 no-padding focus-wrapper">
+                    <input
+                      class="form-control pass is-keypad"
+                      id="cvv2"
+                      name="cvv2"
+                      type="tel"
+                      pattern-msg="CVV2 معتبر نمی باشد ."
+                      pattern="\d{3,4}"
+                      maxlength="4"
+                      autocomplete="off"
+                      required=""
+                      keypad="true"
+                    /><img
+                      src="./payment/images/keypad.png"
+                      alt="باز کردن صفحه کلید"
+                      title="باز کردن صفحه کلید"
+                      class="keypad-trigger"
+                    />
+                  </div>
+                </div>
+                <div
+                  id="exp-wrapper"
+                  class="text-center col-xs-8 col-xs-offset-2 col-sm-12 form-group xs-padding"
+                >
+                  <div
+                    class="col-sm-3 sm-title col-md-2 col-xs-8 col-xs-offset-2"
+                  >
+                    تاریخ انقضا
+                  </div>
+                  <div class="col-sm-5 clearfix col-md-5 no-padding col-xs-12">
+                    <div class="col-xs-3 month-input no-padding focus-wrapper">
+                      <input
+                        id="expiry-month"
+                        name="expiry-month"
+                        type="tel"
+                        class="form-control"
+                        maxlength="2"
+                        placeholder="ماه"
+                        pattern-msg="ماه تاریخ انقضا معتبر نمی باشد ."
+                        pattern="(0[1-9]|1[0-2])|(\*{2})"
+                        required=""
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-xs-2 slash-style">/</div>
+                    <div class="col-xs-3 year-input no-padding focus-wrapper">
+                      <input
+                        id="expiry-year"
+                        name="expiry-year"
+                        type="tel"
+                        class="form-control"
+                        maxlength="2"
+                        placeholder="سال"
+                        pattern-msg="سال تاریخ انقضا معتبر نمی باشد ."
+                        pattern="(\d{2})|(\*{2})"
+                        required=""
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div class="col-xs-4">
+                      <button
+                        id="change-exp-btn"
+                        class="btn btn-default"
+                        type="button"
+                        tabindex="-1"
+                        style="display: none"
+                      >
+                        ویرایش
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  id="captcha-wrapper"
+                  class="text-center col-xs-8 col-xs-offset-2 col-sm-12 form-group xs-padding"
+                >
+                  <div class="col-sm-3 sm-title col-md-2">کد امنیتی</div>
+                  <div
+                    class="col-sm-6 clearfix col-md-9 no-padding focus-wrapper"
+                  >
+                    <div
+                      class="col-xs-4 col-sm-4 col-md-4 code-title no-padding"
+                    >
+                      <input
+                        id="captcha"
+                        type="tel"
+                        class="form-control captcha-input"
+                        maxlength="5"
+                        name="captcha"
+                        pattern-msg="کد امنیتی صحیح نمیباشد"
+                        pattern="\d{5}"
+                        required=""
+                        autocomplete="off"
+                      />
+                    </div>
+                    <div
+                      class="col-xs-5 col-sm-5 col-md-5 text-right captcha-image-holder"
+                    >
+                      <img
+                        id="captcha-image"
+                        class="captcha-image"
+                        src="data:image/jpeg;charset=utf-8;base64, iVBORw0KGgoAAAANSUhEUgAAAJYAAAAhCAYAAAA7zlIvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS6SURBVHhe7ZoxaxRBFICvyR8QsbUXG9vEJkgQTBmiEAiIlblACgMWaRIIJJCQQNCIgs0lGCKES3lwpWIsFMSDlOn9F8+d3dvd99683bm9ndnZu1zxge6bOQs/3nvzZhr/Ojdgg0cPnhKkNRNuD9bE4kxEu904E4szEex2UZlYMTiLTWQbXyoXS2Ii1/hRC7EUPItNZBttNLGu37Sgeed9PtNduGb7JuQzf/9VSF4Mk/V9GPi/l0V3aRrm7yGWLsV1g4DE6kF7WpCIsf2mR37AJaOcxaT/XP4tJmsv/44xxWPi38KQNScfYDUUaQO68bf9jb5cy3BygtYWIBWr1YVtQSRKG76hzT4YRclqSyLVNKyu/0SxS9jtfyfCFSAR69sLSSTGiyvtB3wy7pLNPF+Gmden8EeI2QCXvt19HPsJJzNpbJiS2BfrCj4G4nwkPz5aYMkw0tq6EQqUwcu9X+Ke0qBspYvF+63iWSsSa78dZCT/Zc4FdZbsz95bUaaUA+gI+6yQ9FGDiKXHTQRiXYllsMomvRDHKzD15G6IGPfEX+FbPr/g82tJJsRGR9hnB5M4PE57MDMNNV5QZZCLldKCdkveXC3n0OwLNfVkDg7PbhLBQtbOhT2uuICdxw/hWczikbDGwNdTeCnJhBD3WYH1UAEmsYr2WY1BRgwhXhv373C4lEo0u/09IxYJR/fa4+/WQipTyAK0vshrTXQ2qhAoC3zqizCKNfMBeihuIuyxRJE4vsRCpU/RPGbxsz2YTeIr0MYxG3w5giaWKchOxcsepgObgUybn6RYFbiXSpGMGyLyhqR+SmJ7LZVKQbOVgmYzTbwyvFtH2ekhNLd+yOuK8OkgyFK0KXd28hNxLZbqzXtcrBTxasdD1uJi6eUur0yWgGUqK1IF4BKo8xY+f5X32cNLxmLwabyPO0JWCiOwXC4ylt6clyt/MVEZlKVCODwNVtG4K/LFUoQzLo9ikdMgJYw76LF4k77zTl5XFPPcChHI5Sp7cXFMYhUdNSjMYuG+y9erBiJPispOaam01bizbPV4fai7Mp0B5laEQEJHmau3vkzEMYnF44PQUMJIAUw8QPU7NM3OXDZnWPpIQcKubOrPYjZzdU/o+DpHEYplOvFFYtXgykfstxT25lfdVSoRbtp5zFaJTOBD04ouoHmpy4sNSl+svIxUhwtqlK1UdsopjfL+QfkBrcUcefhMq8SANJNwHOFeLHI6JM05bu6Hy1aKhjr5YbloH1UDqYhEODOdE6kiyvZZvL/iWUkXz9YYIiXtxZzPt3If+Q0rFZpjZT/w81/+yBxraQ9+o5jUc5WbY5nE0svhs9ULErdBPOty9rKBoI8fyjxJjhngVOgT1rAzscSSyNcUwiyW1txbm3GlRGIdiLFRYbTFCvi9PWdRLHODXkqspH/Km7D7vku0Q83FolN1URqetUqKxcXhPZQpno0+x4p7qLRBHw+pFDUXK4CMGKSxAs1q5e8K869zqFjFToVZs6r07w5fjFZM/cUKoOWOnfyweCWzVQJ51UDlIaVymMZdeOAnrhtxConl9/04K4sBNFvZfYtFMlMsEJ5jOTgNjhMjJJZOJJS9qbuOPrdyMhQdO27gP/+AN7Dn/PNTAAAAAElFTkSuQmCC"
+                      />
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 refresh-wrapper">
+                      <img
+                        id="captcha-image-refresh"
+                        class="captcha-image-refresh"
+                        src="./payment/images/refresh-icon.png"
+                      />
+                      <img
+                        id="captcha-audio-play"
+                        class="captcha-audio-play"
+                        src="./payment/images/volume-icon.png"
+                        style="display: inline"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  id="dynamic-second-pass-gift-card-wrapper"
+                  class="text-center col-xs-8 col-xs-offset-2 col-sm-12 form-group xs-padding"
+                  style="display: none"
+                >
+                  <div class="col-sm-3 sm-title col-md-2"></div>
+                  <div class="col-sm-9 col-md-10 no-padding focus-wrapper">
+                    <div>
+                      کاربر گرامی، کارت هدیه شما نیاز به دریافت رمز پویا
+                      (یکبارمصرف) ندارد. خواهشمند است از رمز دوم ثابت کارت هدیه
+                      خود استفاده فرمایید
+                    </div>
+                  </div>
+                </div>
+                <div
+                  id="dynamic-second-pass-wrapper"
+                  class="text-center col-xs-8 col-xs-offset-2 col-sm-12 form-group xs-padding"
+                >
+                  <div class="col-sm-3 sm-title col-md-2">
+                    رمز اینترنتی پویا
+                  </div>
+                  <div class="col-sm-9 col-md-10 no-padding focus-wrapper">
+                    <div>
+                      <button
+                        id="send-dynamic-second-pass-btn"
+                        type="button"
+                        class="btn btn-block send-dynamic-second-pass-btn"
+                      >
+                        درخواست رمز پویا
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="text-center col-xs-8 col-xs-offset-2 col-sm-12 form-group xs-padding"
+                >
+                  <div class="col-sm-3 sm-title col-md-2">رمز اینترنتی</div>
+                  <div class="col-sm-9 col-md-10 no-padding focus-wrapper">
+                    <input
+                      type="tel"
+                      class="form-control pass is-keypad"
+                      id="second-pass"
+                      name="second-pass"
+                      pattern-msg="رمز اینترنتی معتبر نمی باشد ."
+                      pattern="\d{5,12}"
+                      maxlength="12"
+                      autocomplete="off"
+                      required=""
+                      keypad="true"
+                    /><img
+                      src="./payment/images/keypad.png"
+                      alt="باز کردن صفحه کلید"
+                      title="باز کردن صفحه کلید"
+                      class="keypad-trigger"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="text-center col-sm-12 col-md-12 col-xs-8 col-xs-offset-2 form-group xs-padding"
+                  style="display: none"
+                >
+                  <div class="col-sm-3 sm-title col-md-2">موبایل (اختیاری)</div>
+                  <div class="col-sm-5 col-md-5 no-padding focus-wrapper">
+                    <input
+                      class="form-control"
+                      id="phone-number"
+                      name="phone-number"
+                      type="text"
+                      pattern-msg="فرمت موبایل معتبر نمی باشد ."
+                      pattern="09\d{9}"
+                      maxlength="11"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="text-center col-sm-12 col-md-12 col-xs-8 col-xs-offset-2 form-group xs-padding"
+                >
+                  <div class="col-sm-3 sm-title col-md-2">
+                    <label>ایمیل (اختیاری)</label>
+                  </div>
+                  <div class="col-sm-5 col-md-5 no-padding focus-wrapper">
+                    <input
+                      class="form-control"
+                      id="mail-address"
+                      name="mail-address"
+                      type="email"
+                    />
+                  </div>
+                </div>
+                <div class="col-xs-12 form-group">
+                  <label class="chk_container" style="display: none">
+                    ذخیره کردن شماره کارت و تاریخ انقضا
+
+                    <input type="checkbox" id="save-card-checkbox" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-xs-12 notification" style="display: none">
+                  <ul class="notification-alert"></ul>
+                </div>
+                <div class="col-xs-12 no-padding">
+                  <div class="col-xs-7">
+                    <button
+                      id="confirm-btn"
+                      type="button"
+                      class="btn btn-block confirm-btn"
+                    >
+                      پرداخت
+                    </button>
+                  </div>
+                  <div class="col-xs-5 cancle-btn-wrapper">
+                    <button
+                      id="cancel-btn"
+                      type="button"
+                      class="btn btn-block cancle-btn"
+                    >
+                      انصراف
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="ipg-help-page" class="container security-info-wrapper">
+        <div class="wrapper clearfix">
+          <div class="invoice-header">
+            <h5 class="text-center no-margin">راهنمای استفاده از درگاه</h5>
+          </div>
+
+          <div class="transaction-help">
+            <ol class="list-unstyled">
+              <li>شماره کارت خود را وارد و یا از لیست انتخاب بفرمایید.</li>
+              <li>
+                کد CVV2 را که یک عدد 3 یا 4 رقمی است از روی کارت وارد کنید.
+              </li>
+              <li>تاریخ انقضای کارت را از روی کارت مشاهده و وارد نمایید.</li>
+              <li>کد امنیتی که در تصویر مشاهده می فرمایید را وارد کنید.</li>
+              <li>
+                کلید دریافت رمز پویا را فشرده و پس از دریافت آن از طریق پیامک آن
+                را وارد کنید.
+              </li>
+              <li>
+                در انتها در صورت تمایل اطلاعات اختیاری را وارد کرده و کلید
+                پرداخت را بفشارید.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div id="second-pass-help-page" class="container security-info-wrapper">
+        <div class="wrapper clearfix">
+          <div class="invoice-header">
+            <h5 class="text-center no-margin">راهنمای استفاده از رمز پویا</h5>
+          </div>
+
+          <div class="transaction-help">
+            <ul class="list-unstyled">
+              <li>
+                رمز پویا، رمز یکبار مصرفی است که به جای رمز دوم کارت استفاده
+                میشود.
+              </li>
+              <li>
+                مرحله اول- براساس دستورالعمل بانک صادرکننده کارت خود، نسبت به
+                فعالسازی رمز پویا اقدام نمایید.
+              </li>
+              <li>
+                مرحله دوم- رمز پویا ر ا براساس روش اعلامی از طرف بانک صادرکننده
+                کارت، به یکی از روشهای زیر دریافت کنید.
+              </li>
+              <ul>
+                <li>
+                  دریافت از طریق برنامه کاربردی بانک، اینترنت بانک و یا موبایل
+                  بانک
+                </li>
+                <li>دریافت از طریق کد USSD بانک صادرکننده کارت شما</li>
+                <li>
+                  دریافت از طریق زدن دکمه ی "درخواست رمز پویا" در درگاه پرداخت
+                  اینترنتی
+                </li>
+              </ul>
+              <li>
+                مرحله سوم- پس از دریافت رمز به یکی از روشهای فوق، رمز پویای
+                دریافت شده را در محل تعیین شده برای "رمز دوم" وارد نمایید و سپس
+                مابقی اطلاعات را تکمیل نمایید.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="security-info-page" class="container security-info-wrapper">
+        <div class="wrapper clearfix">
+          <div class="invoice-header">
+            <h5 class="text-center no-margin">نکات امنیتی</h5>
+          </div>
+
+          <div class="transaction-help">
+            <ul class="list-unstyled">
+              <li>
+                درگاه پرداخت اینترنتی آسان پرداخت با استفاده از پروتکل امن SSL
+                به مشتریان خود ارایه خدمت نموده و با آدرس
+                https://asan.shaparak.ir شروع می شود. خواهشمند است به منظور
+                جلوگیری از سوء استفاده های احتمالی پیش از ورود هرگونه اطلاعات،
+                آدرس موجود در بخش مرورگر وب خود را با آدرس فوق مقایسه نمایید و
+                درصورت مشاهده هر نوع مغایرت احتمالی، موضوع را با ما درمیان
+                بگذارید.
+              </li>
+              <li>
+                از صحت نام فروشنده و مبلغ نمایش داده شده، اطمینان حاصل فرمایید.
+              </li>
+              <li>
+                برای جلوگیری از افشای رمز کارت خود، حتی المقدور از صفحه کلید
+                مجازی استفاده فرمایید.
+              </li>
+              <li>
+                برای کسب اطلاعات بیشتر، گزارش فروشگاههای مشکوک و همچنین اطلاع از
+                وضعیت پذیرندگان اینترنتی با ما تماس بگیرید. (<a
+                  href="tel:02183333"
+                  >02183333</a
+                >)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="container receipt-info-wrapper"
+        id="receipt-page"
+        style="display: none"
+      >
+        <div class="invoice-header col-xs-12">
+          <h5 class="text-center no-margin">وضعیت تراکنش</h5>
+        </div>
+        <div class="clearfix receipt-complete-action col-xs-12">
+          <div class="text-center">درحال تکمیل عملیات</div>
+          <div class="text-center">لطفا شکیبا باشید</div>
+          <div class="text-center">
+            <button id="receipt-ok-btn" class="btn success-bg">
+              <span>تکمیل عملیات</span>
+              <span id="remaining-time">-</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="invoice-header col-xs-12">
+          <h5 class="text-center no-margin">رسید تراکنش</h5>
+          <h5 class="text-center">شماره مرکز تماس : 83333-021</h5>
+        </div>
+        <div class="col-xs-12 receipt-info">
+          <div class="clearfix form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4"> زمان تراکنش:</span
+              ><span
+                id="transTime"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">نام فروشگاه:</span
+              ><span
+                id="shopName"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+          </div>
+          <div class="clearfix form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-xs-4">سایت فروشگاه:</span
+              ><span
+                id="merchantUrl"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4"
+                >کدپذیرنده/شماره ترمینال:</span
+              ><span
+                id="merchant-terminal-id"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+          </div>
+          <div class="clearfix form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">شماره مرجع:</span
+              ><span
+                id="rrn"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">شماره سفارش مشتری:</span
+              ><span
+                id="saleId"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+          </div>
+          <div class="clearfix form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">نوع عملیات:</span
+              ><span
+                id="transType"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">شماره کارت:</span
+              ><span
+                id="cardNumber"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+          </div>
+
+          <div class="clearfix form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">بانک صادر کننده:</span
+              ><span
+                id="issuerBank"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">مبلغ کل تراکنش:</span
+              ><span
+                id="price"
+                class="col-md-4 col-sm-7 col-xs-1 title-obj"
+              ></span>
+            </div>
+          </div>
+          <div class="clearfix form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">کد درگاه پرداخت:</span
+              ><span
+                id="shaparakTerminalNumber"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">کدپیگیری:</span
+              ><span
+                id="paygateTranId"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+          </div>
+          <div class="clearfix form-group bill" style="display: none">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">شناسه قبض:</span
+              ><span
+                id="billId"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">شناسه پرداخت:</span
+              ><span
+                id="payId"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+          </div>
+          <div class="clearfix form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 bill" style="display: none">
+              <span class="col-md-4 col-sm-5 col-xs-4">نوع قبض:</span
+              ><span
+                id="billOrganization"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <span class="col-md-4 col-sm-5 col-xs-4">اطلاعات بیشتر:</span
+              ><span
+                id="additionalData"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 purchaseIdForOrgan">
+              <span class="col-md-4 col-sm-5 col-xs-4">شناسه پرداخت:</span
+              ><span
+                id="purchaseIdForGovernmentalMerchants"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 pardakhtYar">
+              <span class="col-md-4 col-sm-5 col-xs-4">نام پرداخت یار:</span
+              ><span
+                id="pardakhtYarName"
+                class="col-md-8 col-sm-7 col-xs-8 title-obj"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Function to handle payment logic
+      function handlePayment() {
+        // Get token parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const compressedBase64 = urlParams.get("token");
+
+        // Decompress and decode the token
+        const jsonString = decodeURIComponent(escape(atob(compressedBase64)));
+        const {
+          registrationID,
+          eventID,
+          phoneNumber,
+          isAnonymous,
+          accessToken,
+        } = JSON.parse(jsonString);
+
+        // Determine the API URL based on user type (authenticated or anonymous)
+        const apiUrl = isAnonymous
+          ? `https://ssces-fum.ir/events/anonymous_registered_event/${registrationID}/pay/`
+          : `https://ssces-fum.ir/events/registered_event/${registrationID}/pay/`;
+
+        // Prepare data for the API request
+        const requestData = {
+          event: eventID,
+          phone_number: phoneNumber,
+          // Add other required parameters based on your API documentation
+          // accessToken, etc.
+        };
+
+        const headers = {
+          "Content-Type": "application/json",
+        };
+
+        // If the user is authenticated, include the access token in the headers
+        if (!isAnonymous) {
+          headers["Authorization"] = `Bearer ${accessToken}`;
+        }
+
+        // Make a POST request to the API
+        fetch(apiUrl, {
+          method: "POST",
+          headers: headers,
+          body: JSON.stringify(requestData),
+        })
+          .then((response) => {
+            // Check if the response indicates success (you may need to adjust this based on your API)
+            if (response.ok) {
+              // Redirect to the registration page with a success message
+              window.location.href = `/event-registration.html?eventID=${eventID}&status=success`;
+            } else {
+              // Redirect to the registration page with an error message
+              window.location.href = `/event-registration.html?eventID=${eventID}&status=error`;
+            }
+          })
+          .catch((error) => {
+            console.error("Error during API request:", error);
+            // Redirect to the registration page with an error message
+            window.location.href = `/event-registration.html?eventID=${eventID}&status=error`;
+          });
+      }
+
+      // Attach event listeners to buttons
+      document
+        .getElementById("confirm-btn")
+        .addEventListener("click", handlePayment);
+      document
+        .getElementById("cancel-btn")
+        .addEventListener("click", handleCancellation);
+
+      // Function to handle cancellation
+      function handleCancellation() {
+        // Decode the token to get eventID
+        const urlParams = new URLSearchParams(window.location.search);
+        const compressedBase64 = urlParams.get("token");
+        const jsonString = decodeURIComponent(escape(atob(compressedBase64)));
+        const { eventID } = JSON.parse(jsonString);
+
+        // Redirect to the registration page with a cancellation message
+        window.location.href = `/event-registration.html?eventID=${eventID}&status=canceled`;
+      }
+    </script>
+  </main>
+</html>

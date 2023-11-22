@@ -389,30 +389,73 @@
                   <div class="gdlr-core-sidebar-item gdlr-core-item-pdlr">
                     <div class="tourmaster-room-booking-bar-wrap">
                       <div
-                          class="tourmaster-room-booking-wrap"
-                          class="tourmaster-active"
-                        >
-                          <div
-                            class="clearfix"
-                          >
-                            <img
-                              class="single-post-image"
-                              src="upload/post_ios.jpg"
-                            />
-                            <button id="register-button" class="reg-btn">
-                              <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
-                            </button>
-                          </div>
+                        class="tourmaster-room-booking-wrap"
+                        class="tourmaster-active"
+                      >
+                        <div class="clearfix">
+                          <img
+                            class="single-post-image"
+                            src="upload/post_ios.jpg"
+                          />
+                          <button id="register-button" class="reg-btn">
+                            <i
+                              class="fa fa-cart-plus fa-3x"
+                              aria-hidden="true"
+                            ></i>
+                          </button>
                         </div>
+                      </div>
+                      <form action="#">
+                        <div
+                          id="invalid-phone"
+                          class="registration-error"
+                          style="display: none !important"
+                        >
+                          <i
+                            class="fa fa-times-circle registration-error-icon"
+                          ></i>
+                          <p class="registration-error-text">
+                            شماره تلفن وارد شده معتبر نیست. (مثال: +989123456789
+                            یا 09123456789)
+                          </p>
+                        </div>
+
+                        <div
+                          id="duplicate-registration"
+                          class="registration-error"
+                          style="display: none !important"
+                        >
+                          <i
+                            class="fa fa-times-circle registration-error-icon"
+                          ></i>
+                          <p class="registration-error-text">
+                            این شماره تلفن همراه قبلاً ثبت نام شده است. لطفاً از
+                            یک شماره تلفن همراه دیگر استفاده کنید.
+                          </p>
+                        </div>
+
+                        <div class="success-msg" style="display: none">
+                          <i class="fa fa-check"></i>
+                          <p class="success-msg-text">
+                            ثبت‌نام شما با موفقیت انجام شد.
+                          </p>
+                        </div>
+
                         <input
                           type="tel"
                           class="registration-phone"
                           id="phone-input"
                           placeholder="تلفن همراه:"
+                          required
                         />
-                        <button id="payment-button" class="reg-btn">
+                        <button
+                          type="submit"
+                          id="payment-button"
+                          class="reg-btn"
+                        >
                           ثبت نام
                         </button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -697,6 +740,22 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="toast">
+          <div class="toast-content">
+            <div class="success-message">
+              <span class="success-text text-1">پرداخت موفق</span>
+              <span class="success-text text-2"
+                >ثبت نام شما با موفقیت انجام و پرداخت تایید شد. به جمع ما خوش
+                آمدید</span
+              >
+            </div>
+            <i class="fa fa-check check"></i>
+          </div>
+          <i class="fa fa-times success-close"></i>
+
+          <div class="success-progress"></div>
         </div>
 
         <footer>
