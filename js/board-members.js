@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       newSummary.appendChild(defaultRadio);
 
+      // Determine the course with the smallest ID
+      const smallestIdCourse = courseData.results.reduce((min, course) =>
+        course.id < min.id ? course : min
+      );
+
       // Iterate through the API response and create radio inputs
       courseData.results.forEach((period) => {
         const radio = document.createElement("input");
@@ -82,6 +87,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Append the new summary to the container
       courseSelectionContainer.appendChild(newSummary);
+
+      // Fetch data from the API for members based on the smallest ID course
+      fetch(`${apiURLMembers}?council=${smallestIdCourse.id}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((membersData) => {
+          const membersContainer = document.getElementById("members-container");
+
+          if (membersData.results) {
+            membersContainer.innerHTML = "";
+            membersData.results.forEach((member) => {
+              const imageURL = member.image
+                ? member.image
+                : "upload/profile.jpg";
+
+              const memberHTML = `
+                <div class="gdlr-core-item-list gdlr-core-personnel-list-column gdlr-core-column-20 gdlr-core-item-pdlr clearfix">
+                  <div class="gdlr-core-personnel-list clearfix">
+                    <div class="gdlr-core-personnel-list-image gdlr-core-media-image gdlr-core-zoom-on-hover" style="border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; overflow: hidden;">
+                      <img src="${imageURL}" title="${member.name}" style="width: 100%;" />
+                    </div>
+                    <div class="gdlr-core-personnel-list-content-wrap">
+                      <h3 class="gdlr-core-personnel-list-title" style="font-size: 26px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
+                        <span>${member.name}</span>
+                      </h3>
+                      <div class="gdlr-core-personnel-list-position gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 16px; font-weight: 400; font-style: normal;">${member.description}</div>
+                    </div>
+                  </div>
+                </div>`;
+
+              membersContainer.insertAdjacentHTML("beforeend", memberHTML);
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching member data:", error);
+          // Display an error message to the user
+        });
 
       // Add event listener for course selection
       newSummary.addEventListener("change", function (event) {
