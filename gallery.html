@@ -99,6 +99,10 @@
       type="text/css"
       media="all"
     />
+
+    <link rel="stylesheet" href="./css/gallery.css" />
+
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css" />
   </head>
 
   <body
@@ -231,9 +235,7 @@
                   <div
                     class="login-link tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
                   >
-                    <a
-                      href="login.html"
-                      class="tourmaster-text login-line"
+                    <a href="login.html" class="tourmaster-text login-line"
                       >ورود</a
                     >
                   </div>
@@ -242,13 +244,18 @@
                     <a class="user-dropdown-button" id="user-dropdown-button"
                       >حساب کاربری <i class="fa fa-user user-icon"></i
                     ></a>
-                    <div class="user-dropdown-content" id="user-dropdown-content">
+                    <div
+                      class="user-dropdown-content"
+                      id="user-dropdown-content"
+                    >
                       <div class="user-info">
                         <p class="student-name">نام کاربری</p>
                         <p class="student-id">شماره دانشجویی</p>
                       </div>
                       <div class="menu-separator"></div>
-                      <a class="user-menu-item" href="dashboard.html">داشبورد</a>
+                      <a class="user-menu-item" href="dashboard.html"
+                        >داشبورد</a
+                      >
                       <a class="user-menu-item logout-link" href="#">خروج</a>
                     </div>
                   </div>
@@ -365,347 +372,119 @@
             </div>
           </div>
         </div>
-        <div class="ssces-page-wrapper" id="ssces-page-wrapper">
-          <div class="gdlr-core-page-builder-body">
-            <div
-              class="gdlr-core-pbf-wrapper"
-              style="padding: 60px 20px 55px 20px"
-            >
-              <div class="gdlr-core-pbf-background-wrap"></div>
-              <div class="gdlr-core-pbf-wrapper-content gdlr-core-js">
-                <div
-                  class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-pbf-wrapper-full"
+        <main class="main">
+          <div class="container" id="galleryContainer">
+            <div class="card">
+              <div class="card-image">
+                <a
+                  href="upload/gallery_1.jpg"
+                  data-fancybox="gallery"
+                  data-caption="Caption Images 1"
                 >
-                  <div class="gdlr-core-pbf-element">
-                    <div
-                      class="gdlr-core-gallery-item gdlr-core-item-pdb clearfix gdlr-core-gallery-item-style-grid"
-                      style="padding-bottom: 0"
-                    >
-                      <div
-                        class="gdlr-core-gallery-item-holder gdlr-core-js-2 clearfix"
-                        data-layout="fitrows"
-                      >
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-column-first gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_1.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_1-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                                title="Sofa"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_2.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_2-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                                title="Hotel Room"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_3.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_3-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                                title="Living Room"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_4.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_4-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-column-first gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_5.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_5-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_6.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_6-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_1.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_1-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_2.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_2-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-column-first gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_3.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_3-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_4.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_4-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_5.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_5-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="gdlr-core-item-list gdlr-core-gallery-column gdlr-core-column-15 gdlr-core-item-pdlr gdlr-core-item-mgb"
-                        >
-                          <div
-                            class="gdlr-core-gallery-list gdlr-core-media-image"
-                          >
-                            <a
-                              class="gdlr-core-lightgallery gdlr-core-js"
-                              href="upload/gallery_6.jpg"
-                              data-lightbox-group="gdlr-core-img-group-1"
-                            >
-                              <img
-                                src="upload/gallery_6-1000x670.jpg"
-                                alt=""
-                                width="1000"
-                                height="670"
-                              />
-                              <span class="gdlr-core-image-overlay"
-                                ><i
-                                  class="gdlr-core-image-overlay-icon gdlr-core-size-22 icon_zoom-in_alt"
-                                ></i
-                              ></span>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="gdlr-core-pagination gdlr-core-style-circle gdlr-core-center-align gdlr-core-item-pdlr"
-                    style="margin: auto"
-                  >
-                    <a class="prev page-numbers" href="#"></a>
-                    <span aria-current="page" class="page-numbers current"
-                      >1</span
-                    >
-                    <a class="page-numbers" href="#">2</a>
-                    <a class="next page-numbers" href="#"></a>
-                  </div>
-                </div>
+                  <img src="upload/gallery_1.jpg" alt="Image Gallery" />
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <a
+                  href="upload/gallery_2.jpg"
+                  data-fancybox="gallery"
+                  data-caption="Caption Images 1"
+                >
+                  <img src="upload/gallery_2.jpg" alt="Image Gallery" />
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <a
+                  href="upload/gallery_3.jpg"
+                  data-fancybox="gallery"
+                  data-caption="Caption Images 1"
+                >
+                  <img src="upload/gallery_3.jpg" alt="Image Gallery" />
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <a
+                  href="upload/gallery_4.jpg"
+                  data-fancybox="gallery"
+                  data-caption="Caption Images 1"
+                >
+                  <img src="upload/gallery_4.jpg" alt="Image Gallery" />
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <a
+                  href="upload/gallery_5.jpg"
+                  data-fancybox="gallery"
+                  data-caption="Caption Images 1"
+                >
+                  <img src="upload/gallery_5.jpg" alt="Image Gallery" />
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <a
+                  href="upload/gallery_6.jpg"
+                  data-fancybox="gallery"
+                  data-caption="Caption Images 1"
+                >
+                  <img src="upload/gallery_6.jpg" alt="Image Gallery" />
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <a
+                  href="upload/gallery_1.jpg"
+                  data-fancybox="gallery"
+                  data-caption="Caption Images 1"
+                >
+                  <img src="upload/gallery_1.jpg" alt="Image Gallery" />
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <a
+                  href="upload/gallery_2.jpg"
+                  data-fancybox="gallery"
+                  data-caption="Caption Images 1"
+                >
+                  <img src="upload/gallery_2.jpg" alt="Image Gallery" />
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image">
+                <a
+                  href="upload/gallery_3.jpg"
+                  data-fancybox="gallery"
+                  data-caption="Caption Images 1"
+                >
+                  <img src="upload/gallery_3.jpg" alt="Image Gallery" />
+                </a>
               </div>
             </div>
           </div>
+        </main>
+
+        <div
+          id="pagination"
+          class="gdlr-core-pagination gdlr-core-style-circle gdlr-core-center-align gdlr-core-item-pdlr"
+          style="padding-bottom: 4rem;"
+        >
+          <a class="prev page-numbers" href="#"></a>
+          <span aria-current="page" class="page-numbers current">1</span>
+          <a class="page-numbers" href="#">2</a>
+          <a class="next page-numbers" href="#"></a>
         </div>
 
         <footer>
@@ -717,7 +496,7 @@
                 >
                   <figure class="wp-block-image size-full is-resized">
                     <img
-                    alt="ssces logo"
+                      alt="ssces logo"
                       loading="lazy"
                       src="upload/sscesLogo.png"
                       width="149"
@@ -778,20 +557,20 @@
                 <div
                   class="widget widget_block widget_media_image ssces-widget"
                 >
-                <img
-                alt="engineering faculty logo"
-                class="logo logo-color"
-                loading="lazy"
-                src="upload/engineering-faculty-logo.svg"
-                style="margin-left: 16px;"
-              />
+                  <img
+                    alt="engineering faculty logo"
+                    class="logo logo-color"
+                    loading="lazy"
+                    src="upload/engineering-faculty-logo.svg"
+                    style="margin-left: 16px"
+                  />
 
-              <img
-                alt="fum logo"
-                class="logo logo-color"
-                loading="lazy"
-                src="upload/fum-logo.svg"
-              />
+                  <img
+                    alt="fum logo"
+                    class="logo logo-color"
+                    loading="lazy"
+                    src="upload/fum-logo.svg"
+                  />
                 </div>
               </div>
 
@@ -897,161 +676,13 @@
       src="js/jquery.minaf6c.js?ver=3.6.0"
       id="jquery-core-js"
     ></script>
-    <script
-      type="text/javascript"
-      src="js/jquery-migrate.mind617.js?ver=3.3.2"
-      id="jquery-migrate-js"
-    ></script>
-    <script type="text/javascript" id="snazzymaps-js-js-extra">
-      /* <![CDATA[ */
-      var SnazzyDataForSnazzyMaps = [];
-      SnazzyDataForSnazzyMaps = {
-        id: 15,
-        name: "Subtle Grayscale",
-        description:
-          "A nice, simple grayscale version of the map with color extremes that are never too harsh on the eyes. Originally created for http:\/\/barvinssurvins.fr\/situer.",
-        url: "https:\/\/snazzymaps.com\/style\/15\/subtle-grayscale",
-        imageUrl:
-          "https:\/\/snazzy-maps-cdn.azureedge.net\/assets\/15-subtle-grayscale.png?v=20170626083535",
-        json: '[{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]',
-        views: 1006718,
-        favorites: 2583,
-        createdBy: {
-          name: "Paulo Avila",
-          url: null,
-        },
-        createdOn: "2013-10-30T16:37:24.593",
-        tags: ["greyscale", "light"],
-        colors: ["gray", "white"],
-      };
-      /* ]]> */
-    </script>
 
     <script
       type="text/javascript"
       src="js/ui/core.min.js"
       id="jquery-ui-core-js"
     ></script>
-    <script
-      type="text/javascript"
-      src="js/ui/datepicker.min.js"
-      id="jquery-ui-datepicker-js"
-    ></script>
-    <script type="text/javascript" id="jquery-ui-datepicker-js-after">
-      jQuery(function (jQuery) {
-        jQuery.datepicker.setDefaults({
-          closeText: "Close",
-          currentText: "Today",
-          monthNames: [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
-          ],
-          monthNamesShort: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          nextText: "Next",
-          prevText: "Previous",
-          dayNames: [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-          ],
-          dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-          dayNamesMin: ["S", "M", "T", "W", "T", "F", "S"],
-          dateFormat: "M d, yy",
-          firstDay: 1,
-          isRTL: false,
-        });
-      });
-    </script>
-    <script
-      type="text/javascript"
-      src="js/ui/effect.min.js"
-      id="jquery-effects-core-js"
-    ></script>
-    <script type="text/javascript" id="tourmaster-script-js-extra">
-      /* <![CDATA[ */
-      var TMi18n = {
-        closeText: "Done",
-        currentText: "Today",
-        monthNames: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ],
-        monthNamesShort: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ],
-        dayNames: [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ],
-        dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        dayNamesMin: ["S", "M", "T", "W", "T", "F", "S"],
-        firstDay: "1",
-      };
-      /* ]]> */
-    </script>
-    <script
-      type="text/javascript"
-      src="js/plugins/tourmaster/tourmaster.js"
-      id="tourmaster-script-js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="js/plugins/tourmaster/room/tourmaster-room.js"
-      id="tourmaster-room-script-js"
-    ></script>
+
     <script
       type="text/javascript"
       src="js/plugins/jquery.mmenu.js"
@@ -1059,25 +690,10 @@
     ></script>
     <script
       type="text/javascript"
-      src="js/plugins/jquery.superfish.js"
-      id="ssces-jquery-superfish-js"
-    ></script>
-    <script
-      type="text/javascript"
       src="js/plugins/script-core.js"
       id="ssces-script-core-js"
     ></script>
-    <script
-      type="text/javascript"
-      src="js/plugins/jquery.flexslider-min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="js/plugins/goodlayers-core/plugins/scripta732.js?ver=1653819908"
-      id="gdlr-core-plugin-js"
-    ></script>
     <script type="text/javascript" id="gdlr-core-page-builder-js-extra">
-      /* <![CDATA[ */
       var gdlr_core_pbf = {
         admin: "",
         video: {
@@ -1086,13 +702,10 @@
         },
         ajax_url: "#",
       };
-      /* ]]> */
     </script>
-    <script
-      type="text/javascript"
-      src="js/plugins/goodlayers-core/include/js/page-builderd36b.js?ver=1.3.9"
-      id="gdlr-core-page-builder-js"
-    ></script>
+
+    <script src="/js/plugins/jquery.fancybox.min.js"></script>
+    <script src="/js/gallery.js"></script>
     <script src="/js/authenticatedUser.js"></script>
   </body>
 </html>

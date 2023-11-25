@@ -35,8 +35,11 @@ function updateTable() {
     const persianDate = persianDateConverter(event.event.date);
     const isPaidClass = event.is_paid ? 'class="paid"' : "";
 
+    // Create a link for the event title with the eventID
+    const eventLink = `/event-registration.html?eventID=${event.event.id}`;
+
     row.innerHTML = `
-        <td data-label="عنوان رویداد">${event.event.title}</td>
+        <td data-label="عنوان رویداد"><a class="registered-event" href="${eventLink}" target="_blank">${event.event.title}</a></td>
         <td data-label="تاریخ برگزاری">${persianDate}</td>
         <td data-label="وضعیت پرداخت" ${isPaidClass}>${paymentStatus}</td>
     `;

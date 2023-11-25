@@ -1,50 +1,136 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const apiURL = "https://ssces-fum.ir/central_members/central_members/"; // Use the correct URL
+  const apiURLCourses = "https://ssces-fum.ir/central_members/council_periods/";
+  const apiURLMembers = "https://ssces-fum.ir/central_members/central_members/";
 
-  fetch(apiURL, {
+  // Get the access token from the cookie
+  const accessToken = getCookie("access_token");
+
+  // Fetch data from the API for courses
+  fetch(apiURLCourses, {
+    method: "GET",
     headers: {
-      Authorization: `Bearer ${getCookie("access_token")}`, // Get the access token from the cookie
+      Authorization: `Bearer ${accessToken}`,
     },
   })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+    .then((response) => response.json())
+    .then((courseData) => {
+      const courseSelectionContainer =
+        document.getElementById("courseSelection");
+
+      // Remove existing summary element
+      const existingSummary =
+        courseSelectionContainer.querySelector(".select-summary");
+      if (existingSummary) {
+        courseSelectionContainer.removeChild(existingSummary);
       }
-      return response.json();
-    })
-    .then((data) => {
-      const membersContainer = document.getElementById("members-container");
-      const membersData = data.results;
 
-      if (membersData) {
-        membersContainer.innerHTML = "";
-        membersData.forEach((member) => {
-          // Check if image URL is null, and replace it with the default image URL
-          const imageURL = member.image ? member.image : "upload/profile.jpg";
+      // Create a new summary element
+      const newSummary = document.createElement("summary");
+      newSummary.classList.add("select-summary", "radio-group");
 
-          const memberHTML = `
+      // Create the default radio input
+      const defaultRadio = document.createElement("input");
+      defaultRadio.setAttribute("type", "radio");
+      defaultRadio.setAttribute("name", "item");
+      defaultRadio.setAttribute("id", "default");
+      defaultRadio.classList.add("radio-input");
+      defaultRadio.title = "انتخاب دوره شورا";
+      defaultRadio.checked = true;
+
+      newSummary.appendChild(defaultRadio);
+
+      // Iterate through the API response and create radio inputs
+      courseData.results.forEach((period) => {
+        const radio = document.createElement("input");
+        radio.setAttribute("type", "radio");
+        radio.setAttribute("name", "item");
+        radio.setAttribute("id", period.id);
+        radio.classList.add("radio-input");
+        radio.title = period.period;
+
+        newSummary.appendChild(radio);
+      });
+
+      const periodOptionsContainer = document.getElementById("periodOptions");
+
+      // Remove existing options
+      while (periodOptionsContainer.firstChild) {
+        periodOptionsContainer.removeChild(periodOptionsContainer.firstChild);
+      }
+
+      // Iterate through the API response and create options
+      courseData.results.forEach((period) => {
+        const li = document.createElement("li");
+        li.classList.add("select-option");
+
+        const label = document.createElement("label");
+        label.setAttribute("for", period.id);
+        label.classList.add("radio-label");
+        label.textContent = period.period;
+
+        const input = document.createElement("input");
+        input.setAttribute("type", "radio");
+        input.setAttribute("name", "item");
+        input.setAttribute("id", `item${period.id}`);
+        input.classList.add("radio-input");
+        input.title = period.period;
+
+        li.appendChild(input);
+        li.appendChild(label);
+        periodOptionsContainer.appendChild(li);
+      });
+
+      // Append the new summary to the container
+      courseSelectionContainer.appendChild(newSummary);
+
+      // Add event listener for course selection
+      newSummary.addEventListener("change", function (event) {
+        const selectedPeriodId = event.target.id;
+
+        // Fetch data from the API for members based on selected course
+        fetch(`${apiURLMembers}?council=${selectedPeriodId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+          .then((response) => response.json())
+          .then((membersData) => {
+            const membersContainer =
+              document.getElementById("members-container");
+
+            if (membersData.results) {
+              membersContainer.innerHTML = "";
+              membersData.results.forEach((member) => {
+                const imageURL = member.image
+                  ? member.image
+                  : "upload/profile.jpg";
+
+                const memberHTML = `
                   <div class="gdlr-core-item-list gdlr-core-personnel-list-column gdlr-core-column-20 gdlr-core-item-pdlr clearfix">
-                      <div class="gdlr-core-personnel-list clearfix">
-                          <div class="gdlr-core-personnel-list-image gdlr-core-media-image gdlr-core-zoom-on-hover" style="border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; overflow: hidden;">
-                              <img src="${imageURL}" title="${member.name}" style="width: 100%;" />
-                          </div>
-                          <div class="gdlr-core-personnel-list-content-wrap">
-                              <h3 class="gdlr-core-personnel-list-title" style="font-size: 26px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
-                                  <span>${member.name}</span>
-                              </h3>
-                              <div class="gdlr-core-personnel-list-position gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 16px; font-weight: 400; font-style: normal;">${member.description}</div>
-                          </div>
+                    <div class="gdlr-core-personnel-list clearfix">
+                      <div class="gdlr-core-personnel-list-image gdlr-core-media-image gdlr-core-zoom-on-hover" style="border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; overflow: hidden;">
+                        <img src="${imageURL}" title="${member.name}" style="width: 100%;" />
                       </div>
+                      <div class="gdlr-core-personnel-list-content-wrap">
+                        <h3 class="gdlr-core-personnel-list-title" style="font-size: 26px; font-weight: 500; letter-spacing: 0px; text-transform: none;">
+                          <span>${member.name}</span>
+                        </h3>
+                        <div class="gdlr-core-personnel-list-position gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 16px; font-weight: 400; font-style: normal;">${member.description}</div>
+                      </div>
+                    </div>
                   </div>`;
 
-          membersContainer.insertAdjacentHTML("beforeend", memberHTML);
-        });
-      }
+                membersContainer.insertAdjacentHTML("beforeend", memberHTML);
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching member data:", error);
+            // Display an error message to the user
+          });
+      });
     })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-      // Display an error message to the user
-    });
+    .catch((error) => console.error("Error fetching course data:", error));
 });
 
 // Function to get a cookie by name

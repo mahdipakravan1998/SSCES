@@ -257,7 +257,7 @@
 .lg-sub-html {
     color: #eee;
     font-size: 16px;
-    padding: 10px 40px;
+    padding: 1.8rem;
     text-align: center;
     z-index: 1080;
     opacity: 0;
@@ -1397,8 +1397,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
 .lg-outer .lg-object {
     display: inline-block;
     vertical-align: middle;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 90%;
     width: auto;
     height: auto;
     position: relative

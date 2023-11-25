@@ -106,3 +106,40 @@ function displayEventData(apiData) {
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Fetch data from the API
+  fetch("https://ssces-fum.ir/gallery/gallery_images/")
+    .then((response) => response.json())
+    .then((data) => {
+      // Get the gallery container element
+      const galleryContainer = document.getElementById("gallery-list");
+
+      // Extract the last 6 items from the API results
+      const lastSixImages = data.results.slice(-6);
+
+      // Update HTML for each image
+      lastSixImages.forEach((imageData, index) => {
+        const imageIndex = index + 1;
+
+        // Update the image source
+        const imageElement = document.querySelector(
+          `#gallery-list li:nth-child(${imageIndex}) img`
+        );
+        imageElement.src = imageData.image;
+        imageElement.alt = imageData.description;
+        imageElement.title = imageData.description;
+        imageElement.draggable = true;
+
+        imageElement.classList.add("cropped-image");
+
+        // Remove the 'a' tag
+        const anchorElement = document.querySelector(
+          `#gallery-list li:nth-child(${imageIndex}) a`
+        );
+        const parentLi = anchorElement.parentElement;
+        parentLi.replaceChild(imageElement, anchorElement);
+      });
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+});

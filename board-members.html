@@ -174,7 +174,9 @@
                   </li>
                   <li class="menu-item"><a href="blog.html">بلاگ</a></li>
                   <li class="menu-item current-menu-item hide">
-                    <a href="board-members.html" aria-current="page">اعضای شورا</a>
+                    <a href="board-members.html" aria-current="page"
+                      >اعضای شورا</a
+                    >
                   </li>
                   <li class="menu-item hide">
                     <a href="join-us.html">همکاری با ما</a>
@@ -231,9 +233,7 @@
                   <div
                     class="login-link tourmaster-user-top-bar tourmaster-guest tourmaster-style-2"
                   >
-                    <a
-                      href="login.html"
-                      class="tourmaster-text login-line"
+                    <a href="login.html" class="tourmaster-text login-line"
                       >ورود</a
                     >
                   </div>
@@ -242,13 +242,18 @@
                     <a class="user-dropdown-button" id="user-dropdown-button"
                       >حساب کاربری <i class="fa fa-user user-icon"></i
                     ></a>
-                    <div class="user-dropdown-content" id="user-dropdown-content">
+                    <div
+                      class="user-dropdown-content"
+                      id="user-dropdown-content"
+                    >
                       <div class="user-info">
                         <p class="student-name">نام کاربری</p>
                         <p class="student-id">شماره دانشجویی</p>
                       </div>
                       <div class="menu-separator"></div>
-                      <a class="user-menu-item" href="dashboard.html">داشبورد</a>
+                      <a class="user-menu-item" href="dashboard.html"
+                        >داشبورد</a
+                      >
                       <a class="user-menu-item logout-link" href="#">خروج</a>
                     </div>
                   </div>
@@ -373,6 +378,27 @@
               data-skin="Personnel"
               id="gdlr-core-wrapper-1"
             >
+              <details class="custom-select-wrapper" id="courseSelection">
+                <summary class="select-summary radio-group">
+                  <input
+                    type="radio"
+                    name="item"
+                    id="default"
+                    class="radio-input"
+                    title="انتخاب دوره شورا"
+                    checked
+                  />
+                </summary>
+                <ul class="select-dropdown remove-marker" id="periodOptions">
+                  <li class="select-option">
+                    <label for="item1" class="radio-label">
+                      1401
+                      <span></span>
+                    </label>
+                  </li>
+                </ul>
+              </details>
+
               <div class="gdlr-core-pbf-background-wrap"></div>
               <div class="gdlr-core-pbf-wrapper-content gdlr-core-js">
                 <div
@@ -837,7 +863,7 @@
                 >
                   <figure class="wp-block-image size-full is-resized">
                     <img
-                    alt="ssces logo"
+                      alt="ssces logo"
                       loading="lazy"
                       src="upload/sscesLogo.png"
                       width="149"
@@ -898,20 +924,20 @@
                 <div
                   class="widget widget_block widget_media_image ssces-widget"
                 >
-                <img
-                alt="engineering faculty logo"
-                class="logo logo-color"
-                loading="lazy"
-                src="upload/engineering-faculty-logo.svg"
-                style="margin-left: 16px;"
-              />
+                  <img
+                    alt="engineering faculty logo"
+                    class="logo logo-color"
+                    loading="lazy"
+                    src="upload/engineering-faculty-logo.svg"
+                    style="margin-left: 16px"
+                  />
 
-              <img
-                alt="fum logo"
-                class="logo logo-color"
-                loading="lazy"
-                src="upload/fum-logo.svg"
-              />
+                  <img
+                    alt="fum logo"
+                    class="logo logo-color"
+                    loading="lazy"
+                    src="upload/fum-logo.svg"
+                  />
                 </div>
               </div>
 
