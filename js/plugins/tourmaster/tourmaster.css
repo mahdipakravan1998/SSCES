@@ -20,6 +20,16 @@
 	height: 0;
 }
 
+.tourmaster-item-pdlr {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.tourmaster-item-mglr {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 .tourmaster-column-10 {
 	float: left;
 	width: 16.6666%;

@@ -228,10 +228,6 @@ async function checkUserRegistrationStatus(eventId) {
       const registeredEvent = data.results.find(
         (result) => result.event.id === eventId
       );
-      console.log(
-        "🚀 ~ file: event-registration.js:225 ~ checkUserRegistrationStatus ~ registeredEvent:",
-        registeredEvent
-      );
 
       if (registeredEvent) {
         if (registeredEvent.is_paid) {

@@ -73,14 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
         label.classList.add("radio-label");
         label.textContent = period.period;
 
-        const input = document.createElement("input");
-        input.setAttribute("type", "radio");
-        input.setAttribute("name", "item");
-        input.setAttribute("id", `item${period.id}`);
-        input.classList.add("radio-input");
-        input.title = period.period;
-
-        li.appendChild(input);
         li.appendChild(label);
         periodOptionsContainer.appendChild(li);
       });
@@ -106,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 : "upload/profile.jpg";
 
               const memberHTML = `
-                <div class="gdlr-core-item-list gdlr-core-personnel-list-column gdlr-core-column-20 gdlr-core-item-pdlr clearfix">
+                <div class="gdlr-core-item-list gdlr-core-personnel-list-column gdlr-core-column-15 gdlr-core-item-pdlr clearfix">
                   <div class="gdlr-core-personnel-list clearfix">
                     <div class="gdlr-core-personnel-list-image gdlr-core-media-image gdlr-core-zoom-on-hover" style="border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; overflow: hidden;">
                       <img src="${imageURL}" title="${member.name}" style="width: 100%;" />
@@ -152,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   : "upload/profile.jpg";
 
                 const memberHTML = `
-                  <div class="gdlr-core-item-list gdlr-core-personnel-list-column gdlr-core-column-20 gdlr-core-item-pdlr clearfix">
+                  <div class="gdlr-core-item-list gdlr-core-personnel-list-column gdlr-core-column-15 gdlr-core-item-pdlr clearfix">
                     <div class="gdlr-core-personnel-list clearfix">
                       <div class="gdlr-core-personnel-list-image gdlr-core-media-image gdlr-core-zoom-on-hover" style="border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px; overflow: hidden;">
                         <img src="${imageURL}" title="${member.name}" style="width: 100%;" />

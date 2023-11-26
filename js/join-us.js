@@ -75,29 +75,52 @@ async function populateContent() {
 
 window.addEventListener("load", populateContent);
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   // Hide all content items except the active one
-  $("#tabContents .gdlr-core-tab-item-content:not(.gdlr-core-active)").hide();
+  var tabContentItems = document.querySelectorAll(
+    "#tabContents .gdlr-core-tab-item-content:not(.gdlr-core-active)"
+  );
+  tabContentItems.forEach(function (item) {
+    item.style.display = "none";
+  });
 
   // Handle title clicks using event delegation
-  $("#tabTitles").on("click", ".gdlr-core-tab-item-title", function () {
-    // Remove active class from all titles
-    $("#tabTitles .gdlr-core-tab-item-title").removeClass(
-      "gdlr-core-active active-tab-border"
-    );
+  document
+    .getElementById("tabTitles")
+    .addEventListener("click", function (event) {
+      if (event.target.classList.contains("gdlr-core-tab-item-title")) {
+        // Remove active class from all titles
+        var tabTitles = document.querySelectorAll(
+          "#tabTitles .gdlr-core-tab-item-title"
+        );
+        tabTitles.forEach(function (title) {
+          title.classList.remove("gdlr-core-active", "active-tab-border");
+        });
 
-    // Add active class to the clicked title and apply the style class
-    $(this).addClass("gdlr-core-active active-tab-border");
+        // Add active class to the clicked title and apply the style class
+        event.target.classList.add("gdlr-core-active", "active-tab-border");
 
-    // Get the data-tab-id of the clicked title
-    var tabId = $(this).attr("data-tab-id");
+        // Get the data-tab-id of the clicked title
+        var tabId = event.target.getAttribute("data-tab-id");
 
-    // Hide all content items except the one with the corresponding tabId
-    $("#tabContents .gdlr-core-tab-item-content").hide();
-    $(
-      "#tabContents .gdlr-core-tab-item-content[data-tab-id='" + tabId + "']"
-    ).show();
-  });
+        // Hide all content items except the one with the corresponding tabId
+        var allTabContentItems = document.querySelectorAll(
+          "#tabContents .gdlr-core-tab-item-content"
+        );
+        allTabContentItems.forEach(function (item) {
+          item.style.display = "none";
+        });
+
+        var selectedTabContent = document.querySelector(
+          "#tabContents .gdlr-core-tab-item-content[data-tab-id='" +
+            tabId +
+            "']"
+        );
+        if (selectedTabContent) {
+          selectedTabContent.style.display = "block";
+        }
+      }
+    });
 });
 
 // Function to replace form content with success message
@@ -118,7 +141,6 @@ function replaceFormWithSuccess(formId) {
 
 // Function to fetch API data and update forms
 async function fetchDataAndUpdateForms() {
-  console.log("Fetching");
   try {
     // Make a GET request to the API
     const response = await fetch(
@@ -309,7 +331,6 @@ async function handleSubmit(event) {
     if (response.status === 201) {
       handleSuccess();
     } else if (response.status === 500) {
-      console.log(response.status);
       console.error("Error sending data to server:", result);
       // Handle other error cases
     }

@@ -89,8 +89,8 @@ function removeHiddenElements() {
 }
 
 function setTokens(access, refresh) {
-  document.cookie = `access_token=${access}; Secure;`;
-  document.cookie = `refresh_token=${refresh}; Secure;`;
+  document.cookie = `access_token=${access}; SameSite=None; Secure;`;
+  document.cookie = `refresh_token=${refresh}; SameSite=None; Secure;`;
 }
 
 async function refreshAccessToken(refreshToken) {

@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const data = await response.json();
 
         // Store the access token with the Secure flag
-        document.cookie = `access_token=${data.access}; Secure;`;
-        document.cookie = `refresh_token=${data.refresh}; Secure;`;
+        document.cookie = `access_token=${data.access}; SameSite=None; Secure;`;
+        document.cookie = `refresh_token=${data.refresh}; SameSite=None; Secure;`;
 
         // Redirect to the main page (index.html)
         window.location.href = "index.html";

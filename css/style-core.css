@@ -525,27 +525,28 @@ p.voluntarily-form-title {
 	justify-content: center;
 	align-items: center;
 	z-index: 9999;
-  }
-  
-  #preloader img {
-	width: 100px; /* Adjust the width as needed */
-	height: 100px; /* Adjust the height as needed */
-  }
-  
-  #preloader img:nth-child(2) {
+}
+
+#preloader img {
+	width: 100px;
+	height: 100px;
+}
+
+#preloader img:nth-child(2) {
 	position: absolute;
 	animation: rotateAnimation 10s linear infinite;
-  }
-  
-  @keyframes rotateAnimation {
+}
+
+@keyframes rotateAnimation {
 	from {
-	  transform: rotate(0deg);
+		transform: rotate(0deg);
 	}
+
 	to {
-	  transform: rotate(360deg);
+		transform: rotate(360deg);
 	}
-  }
-  
+}
+
 
 .login-line {
 	border-right: 2px solid;
@@ -10092,4 +10093,24 @@ span.paypal-button-text.true {
 
 textarea.input {
 	height: 200px;
+}
+
+[class^="gdlr-icon-"],
+[class*=" gdlr-icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'gdl-custom-set' !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.gdlr-icon-clock:before {
+	content: "\e939";
 }
