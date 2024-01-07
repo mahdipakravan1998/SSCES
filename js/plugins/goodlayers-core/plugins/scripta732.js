@@ -3045,7 +3045,7 @@ var Froogaloop = (function () {
                 '" class="lg-components">\n                    ' +
                 (".lg-sub-html" === this.settings.appendSubHtmlTo ? i : "") +
                 "\n                </div>\n            </div>\n        </div>\n        ";
-            x(this.settings.container).append(g),
+            // x(this.settings.container).append(g),
               document.body !== this.settings.container &&
                 x(this.settings.container).css("position", "relative"),
               (this.outer = this.getElementById("lg-outer")),
