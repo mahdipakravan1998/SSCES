@@ -52,7 +52,7 @@ fetch("http://ssces.ir:8000/events/events/?ordering=-date")
 
 function displayEventData(apiData) {
   // Get the last 9 events from the API response
-  const lastNineEvents = apiData.results.slice(-9);
+  const lastNineEvents = apiData.results.slice(0, 9);
 
   // Loop through each event and display its information
   lastNineEvents.forEach((event, index) => {
