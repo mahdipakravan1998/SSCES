@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const apiURLCourses = "http://ssces.ir:8000/central_members/council_periods/";
-  const apiURLMembers = "http://ssces.ir:8000/central_members/central_members/";
+  const apiURLCourses = "https://ssces.ir:8000/central_members/council_periods/";
+  const apiURLMembers = "https://ssces.ir:8000/central_members/central_members/";
 
   // Get the access token from the cookie
   const accessToken = getCookie("access_token");

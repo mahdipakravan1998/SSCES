@@ -764,8 +764,8 @@
 
         // Determine the API URL based on user type (authenticated or anonymous)
         const apiUrl = isAnonymous
-          ? `http://ssces.ir:8000/events/anonymous_registered_event/${registrationID}/pay/`
-          : `http://ssces.ir:8000/events/registered_event/${registrationID}/pay/`;
+          ? `https://ssces.ir:8000/events/anonymous_registered_event/${registrationID}/pay/`
+          : `https://ssces.ir:8000/events/registered_event/${registrationID}/pay/`;
 
         // Prepare data for the API request
         const requestData = {

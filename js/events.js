@@ -1,5 +1,5 @@
 async function fetchEventsData() {
-  const apiUrl = "http://ssces.ir:8000/events/events/?ordering=-date";
+  const apiUrl = "https://ssces.ir:8000/events/events/?ordering=-date";
 
   try {
     const response = await fetch(apiUrl);

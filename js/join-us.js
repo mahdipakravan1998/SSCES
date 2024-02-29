@@ -1,5 +1,5 @@
 async function fetchData() {
-  const apiUrl = "http://ssces.ir:8000/cooperation/cooperation_forms/";
+  const apiUrl = "https://ssces.ir:8000/cooperation/cooperation_forms/";
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -144,7 +144,7 @@ async function fetchDataAndUpdateForms() {
   try {
     // Make a GET request to the API
     const response = await fetch(
-      "http://ssces.ir:8000/cooperation/cooperation_replies/",
+      "https://ssces.ir:8000/cooperation/cooperation_replies/",
       {
         headers: {
           "Content-Type": "application/json",
@@ -315,7 +315,7 @@ async function handleSubmit(event) {
 
   try {
     const response = await fetch(
-      "http://ssces.ir:8000/cooperation/cooperation_replies/",
+      "https://ssces.ir:8000/cooperation/cooperation_replies/",
       {
         method: "POST",
         headers: {

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       // Make a POST request to obtain the access token
-      const response = await fetch("http://ssces.ir:8000/users/token/", {
+      const response = await fetch("https://ssces.ir:8000/users/token/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
