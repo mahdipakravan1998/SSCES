@@ -62,6 +62,16 @@ async function populateEventPage() {
     anonymousPriceElement.textContent =
       event.anonymous_user_price + " هزار تومان";
     descriptionElement.innerHTML = event.description;
+
+    // Check if the anonymous user capacity is equal to 0 and hide the section if true
+    const anonymousPriceSection = anonymousPriceElement.closest(
+      ".gdlr-core-pbf-element"
+    );
+    if (event.anonymous_user_capacity === 0 && anonymousPriceSection) {
+      anonymousPriceSection.style.display = "none";
+    } else if (anonymousPriceSection) {
+      anonymousPriceSection.style.display = "";
+    }
   } else {
     console.error("Event details not found.");
   }
