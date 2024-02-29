@@ -13,7 +13,7 @@ function getEventIdFromUrl() {
 }
 
 async function fetchEventDetails(eventId) {
-  const apiUrl = `https://ssces-fum.ir/events/events/${eventId}/`;
+  const apiUrl = `http://ssces.ir:8000/events/events/${eventId}/`;
 
   try {
     const response = await fetch(apiUrl);
@@ -130,7 +130,7 @@ function registerEvent(eventId, phoneNumber, isAnonymous) {
   return new Promise((resolve, reject) => {
     const apiUrl = isAnonymous
       ? "http://ssces-fum.ir/events/anonymous_registered_event/"
-      : "https://ssces-fum.ir/events/registered_event/";
+      : "http://ssces.ir:8000/events/registered_event/";
 
     const requestData = {
       event: eventId,
@@ -203,7 +203,7 @@ function hideDuplicateRegistrationElement() {
 
 // New function to check user registration status and update UI accordingly
 async function checkUserRegistrationStatus(eventId) {
-  const apiUrl = "https://ssces-fum.ir/events/registered_event/";
+  const apiUrl = "http://ssces.ir:8000/events/registered_event/";
 
   try {
     const accessToken = getAccessToken();
@@ -252,7 +252,7 @@ async function checkUserRegistrationStatus(eventId) {
 }
 
 async function getRegistrationId(eventId) {
-  const apiUrl = `https://ssces-fum.ir/events/registered_event/`;
+  const apiUrl = `http://ssces.ir:8000/events/registered_event/`;
 
   try {
     const accessToken = getAccessToken();

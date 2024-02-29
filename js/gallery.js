@@ -75,7 +75,7 @@ async function fetchAndDisplayGalleryPage(pageNumber) {
 }
 
 async function fetchGalleryData() {
-  const apiUrl = "https://ssces-fum.ir/gallery/gallery_images/";
+  const apiUrl = "http://ssces.ir:8000/gallery/gallery_images/";
 
   try {
     const response = await fetch(apiUrl);

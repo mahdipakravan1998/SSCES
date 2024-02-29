@@ -95,7 +95,7 @@ function setTokens(access, refresh) {
 
 async function refreshAccessToken(refreshToken) {
   try {
-    const response = await fetch("https://ssces-fum.ir/users/token/refresh/", {
+    const response = await fetch("http://ssces.ir:8000/users/token/refresh/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -194,7 +194,7 @@ function updateUserInfoFromAPI() {
   const accessToken = getAccessToken(); // Implement this function to extract the access token from the cookie
 
   // Step 2: Make the API request
-  fetch("https://ssces-fum.ir/users/profile/", {
+  fetch("http://ssces.ir:8000/users/profile/", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${accessToken}`,

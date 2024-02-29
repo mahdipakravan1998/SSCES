@@ -1,5 +1,5 @@
 async function fetchApiData() {
-  const apiURL = "https://ssces-fum.ir/events/events/?ordering=-date";
+  const apiURL = "http://ssces.ir:8000/events/events/?ordering=-date";
 
   try {
     const response = await fetch(apiURL);
@@ -40,7 +40,7 @@ async function fetchApiData() {
 fetchApiData();
 
 // Fetch the API data
-fetch("https://ssces-fum.ir/events/events/?ordering=-date")
+fetch("http://ssces.ir:8000/events/events/?ordering=-date")
   .then((response) => response.json())
   .then((data) => {
     // Process the data and update the event section
@@ -109,7 +109,7 @@ function displayEventData(apiData) {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Fetch data from the API
-  fetch("https://ssces-fum.ir/gallery/gallery_images/")
+  fetch("http://ssces.ir:8000/gallery/gallery_images/")
     .then((response) => response.json())
     .then((data) => {
       // Get the gallery container element

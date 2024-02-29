@@ -377,7 +377,7 @@ if (!accessToken) {
   console.error("Access token not found in cookies.");
 } else {
   // 2. Make an HTTP GET request to the API
-  fetch("https://ssces-fum.ir/users/profile/", {
+  fetch("http://ssces.ir:8000/users/profile/", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -428,7 +428,7 @@ async function fetchData() {
     return;
   }
 
-  const apiUrl = "https://ssces-fum.ir/events/registered_event/";
+  const apiUrl = "http://ssces.ir:8000/events/registered_event/";
 
   try {
     const response = await fetch(apiUrl, {
@@ -463,7 +463,7 @@ async function fetchAndPopulateCollaborationsTable() {
   if (!accessToken) {
     console.error("Access token not found in cookies.");
   } else {
-    const apiUrl = "https://ssces-fum.ir/cooperation/cooperation_replies/";
+    const apiUrl = "http://ssces.ir:8000/cooperation/cooperation_replies/";
 
     try {
       const response = await fetch(apiUrl, {
